@@ -4,5435 +4,1127 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vocaboo ✨</title>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
 :root{
-  --purple:#7857e8;
-  --purple2:#6242d6;
-  --pink:#ff77ae;
-  --yellow:#ffcf56;
-  --mint:#7be3c1;
-  --blue:#82c8ff;
-  --red:#ff7c7c;
-  --orange:#ffad68;
-  --ink:#30264b;
-  --muted:#8d87a1;
-  --bg:#f7f4ff;
-  --white:#fff;
-  --shadow:0 15px 40px rgba(74,55,130,.12);
-  --radius:22px;
+  --purple:#7857e8;--purple2:#6242d6;--pink:#ff77ae;--yellow:#ffcf56;
+  --mint:#7be3c1;--blue:#82c8ff;--red:#ff7c7c;--orange:#ffad68;
+  --ink:#30264b;--muted:#8d87a1;--bg:#f7f4ff;--white:#fff;
+  --shadow:0 12px 35px rgba(72,52,130,.12);
 }
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:'Nunito',sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-}
-
-button,input,textarea,select{
-  font:inherit;
-}
-
-button{
-  border:0;
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* AUTH */
-
-.auth{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
-  background:
-    radial-gradient(circle at 10% 10%,rgba(255,119,174,.22),transparent 28%),
-    radial-gradient(circle at 90% 20%,rgba(130,200,255,.25),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(123,227,193,.25),transparent 35%),
-    var(--bg);
-}
-
-.auth-card{
-  width:min(480px,100%);
-  background:white;
-  border-radius:32px;
-  padding:38px;
-  box-shadow:var(--shadow);
-}
-
-.logo-big{
-  text-align:center;
-  font-size:42px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.auth-subtitle{
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:30px;
-}
-
-.auth-tabs{
-  display:flex;
-  background:#f3efff;
-  padding:5px;
-  border-radius:15px;
-  margin-bottom:24px;
-}
-
-.auth-tab{
-  flex:1;
-  padding:12px;
-  border-radius:11px;
-  background:transparent;
-  color:var(--muted);
-  font-weight:800;
-}
-
-.auth-tab.active{
-  background:white;
-  color:var(--purple);
-  box-shadow:0 5px 15px rgba(70,50,130,.08);
-}
-
-.field{
-  margin-bottom:15px;
-}
-
-.field label{
-  display:block;
-  font-size:14px;
-  font-weight:800;
-  margin-bottom:7px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:2px solid #eee9fb;
-  border-radius:14px;
-  padding:13px 15px;
-  outline:none;
-  color:var(--ink);
-  background:white;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:var(--purple);
-}
-
-.primary-btn{
-  width:100%;
-  background:linear-gradient(135deg,var(--purple),var(--purple2));
-  color:white;
-  padding:14px 18px;
-  border-radius:15px;
-  font-weight:900;
-  box-shadow:0 8px 20px rgba(120,87,232,.25);
-}
-
-.secondary-btn{
-  background:#f0ecff;
-  color:var(--purple2);
-  padding:12px 16px;
-  border-radius:13px;
-  font-weight:800;
-}
-
-.danger-btn{
-  background:#fff0f0;
-  color:#e45656;
-  padding:12px 16px;
-  border-radius:13px;
-  font-weight:800;
-}
-
-.success-btn{
-  background:#e2faef;
-  color:#16845e;
-  padding:12px 16px;
-  border-radius:13px;
-  font-weight:800;
-}
-
-.auth-info{
-  margin-top:18px;
-  padding:14px;
-  background:#f7f4ff;
-  border-radius:14px;
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.5;
-}
-
-/* APP */
-
-.app{
-  min-height:100vh;
-}
-
-.topbar{
-  height:76px;
-  background:white;
-  border-bottom:1px solid #eeeafa;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:0 22px;
-  position:sticky;
-  top:0;
-  z-index:50;
-}
-
-.logo{
-  font-size:26px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.top-spacer{
-  flex:1;
-}
-
-.name-input{
-  width:150px;
-  border:2px solid #eee9fb;
-  border-radius:13px;
-  padding:9px 12px;
-  outline:none;
-}
-
-.coin-pill{
-  background:#fff7d9;
-  color:#9b7400;
-  padding:10px 15px;
-  border-radius:14px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.streak-pill{
-  background:#fff0e2;
-  color:#e67822;
-  padding:10px 14px;
-  border-radius:14px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.admin-star{
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  background:#f4efff;
-  font-size:20px;
-}
-
-/* LAYOUT */
-
-.layout{
-  display:flex;
-  min-height:calc(100vh - 76px);
-}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Nunito,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;border:0}
+.app{display:flex;min-height:100vh}
 .sidebar{
-  width:235px;
-  background:white;
-  border-right:1px solid #eeeafa;
-  padding:20px 14px;
-  flex-shrink:0;
+  width:245px;background:#fff;border-right:1px solid #eee7ff;
+  padding:22px 15px;position:fixed;left:0;top:0;bottom:0;overflow:auto
 }
-
-.nav-title{
-  color:#aaa4b9;
-  font-size:11px;
-  font-weight:900;
-  text-transform:uppercase;
-  margin:12px 10px 8px;
+.logo{font-size:28px;font-weight:900;color:var(--purple);padding:10px 14px 24px}
+.nav button{
+  width:100%;background:transparent;padding:13px 15px;border-radius:14px;
+  text-align:left;color:var(--muted);font-weight:800;margin:3px 0
 }
-
-.nav-btn{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:12px 13px;
-  margin-bottom:5px;
-  border-radius:13px;
-  background:transparent;
-  color:#625b76;
-  text-align:left;
-  font-weight:800;
+.nav button:hover,.nav button.active{background:#eeeaff;color:var(--purple)}
+.main{margin-left:245px;width:calc(100% - 245px)}
+.topbar{
+  height:78px;background:#fff;border-bottom:1px solid #eee7ff;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  position:sticky;top:0;z-index:10
 }
-
-.nav-btn:hover{
-  background:#f7f4ff;
-}
-
-.nav-btn.active{
-  background:#eee9ff;
-  color:var(--purple);
-}
-
-.main{
-  flex:1;
-  padding:28px;
-  max-width:1500px;
-  margin:auto;
-  width:100%;
-}
-
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-}
-
-.page-title{
-  font-size:31px;
-  font-weight:900;
-  margin:0 0 6px;
-}
-
-.page-subtitle{
-  color:var(--muted);
-  margin:0 0 25px;
-}
-
-/* CARDS */
-
-.grid{
-  display:grid;
-  gap:18px;
-}
-
-.grid-4{
-  grid-template-columns:repeat(4,1fr);
-}
-
-.grid-3{
-  grid-template-columns:repeat(3,1fr);
-}
-
-.grid-2{
-  grid-template-columns:repeat(2,1fr);
-}
-
+.coins{background:#fff5cf;color:#a87500;padding:10px 15px;border-radius:30px;font-weight:900}
+.top-actions{display:flex;align-items:center;gap:10px}
+.nameInput{border:1px solid #e6def8;border-radius:12px;padding:9px 12px;width:150px}
+.star{background:none;font-size:22px}
+.content{padding:30px;max-width:1300px;margin:auto}
+h1{font-size:34px;margin:0 0 8px;font-weight:900}
+h2{font-size:24px;margin-top:0}
+p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .card{
-  background:white;
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
+  background:#fff;border-radius:22px;padding:22px;box-shadow:var(--shadow);
+  border:1px solid #eee8ff
 }
-
-.stat-card{
-  min-height:130px;
+.stat{font-size:30px;font-weight:900;color:var(--purple)}
+.btn{
+  background:var(--purple);color:#fff;padding:12px 18px;border-radius:13px;
+  font-weight:900;transition:.15s
 }
-
-.stat-icon{
-  font-size:30px;
+.btn:hover{transform:translateY(-1px);background:var(--purple2)}
+.btn.secondary{background:#eeeaff;color:var(--purple)}
+.btn.green{background:#48bd91}
+.btn.red{background:var(--red)}
+.btn.orange{background:var(--orange);color:#563000}
+.btn.blue{background:var(--blue);color:#193b55}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+input,textarea,select{
+  width:100%;border:1px solid #ded7ef;border-radius:12px;padding:12px;
+  outline:none;background:#fff;color:var(--ink)
 }
-
-.stat-number{
-  font-size:27px;
-  font-weight:900;
-  margin-top:8px;
-}
-
-.stat-label{
-  color:var(--muted);
-  font-weight:700;
-  font-size:14px;
-}
-
-.hero{
-  background:linear-gradient(135deg,#7857e8,#9b7cff);
-  color:white;
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 20px 45px rgba(120,87,232,.22);
-  margin-bottom:20px;
-}
-
-.hero h2{
-  font-size:32px;
-  margin:0 0 8px;
-}
-
-.hero p{
-  opacity:.9;
-  margin:0 0 20px;
-}
-
-.hero .primary-btn{
-  width:auto;
-  background:white;
-  color:var(--purple);
-}
-
-/* LEARNING */
-
-.learn-box{
-  max-width:800px;
-  margin:auto;
-  text-align:center;
-}
-
-.word-display{
-  font-size:48px;
-  font-weight:900;
-  margin:30px 0 8px;
-}
-
-.translation{
-  color:var(--muted);
-  font-size:25px;
-  margin-bottom:25px;
-}
-
-.answer-buttons{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.answer-buttons button{
-  padding:14px 25px;
-  border-radius:15px;
-  font-weight:900;
-}
-
-.know-btn{
-  background:#dff9ef;
-  color:#16845e;
-}
-
-.repeat-btn{
-  background:#fff0e0;
-  color:#b86613;
-}
-
-/* WORDS */
-
-.import-box{
-  border:2px dashed #dcd4f4;
-  border-radius:20px;
-  padding:22px;
-  background:#fbfaff;
-}
-
-.import-box textarea{
-  min-height:180px;
-  resize:vertical;
-}
-
-.import-help{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-  margin:12px 0;
-}
-
-.word-list{
-  display:grid;
-  gap:10px;
-  margin-top:18px;
-}
-
+textarea{min-height:180px;resize:vertical}
+.form{display:grid;gap:12px}
 .word-row{
-  background:white;
-  border-radius:17px;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  box-shadow:0 7px 20px rgba(70,50,130,.07);
+  display:grid;grid-template-columns:1fr 1fr auto auto;gap:8px;
+  align-items:center;margin-bottom:10px
 }
-
-.word-left{
-  min-width:0;
-  flex:1;
+.badge{display:inline-block;padding:6px 10px;border-radius:20px;background:#eeeaff;color:var(--purple);font-weight:800}
+.hero{
+  background:linear-gradient(135deg,#eee9ff,#fff);
+  border-radius:28px;padding:30px;margin-bottom:20px
 }
-
-.word-left strong{
-  display:block;
-  font-size:17px;
+.learning-card{
+  max-width:650px;margin:20px auto;background:#fff;border-radius:28px;
+  padding:45px;text-align:center;box-shadow:var(--shadow)
 }
-
-.word-left span{
-  color:var(--muted);
+.big-word{font-size:48px;font-weight:900;margin:20px 0}
+.answer{font-size:25px;font-weight:800;color:var(--purple);min-height:40px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.choice{background:#f0ecff;color:var(--ink);padding:16px;border-radius:14px;font-weight:800}
+.choice:hover{background:#ddd5ff}
+.game{
+  min-height:230px;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center
 }
-
-.word-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
+.game-target{
+  font-size:55px;font-weight:900;padding:25px;user-select:none
 }
-
-.edit-box{
-  background:#f8f6ff;
-  border-radius:15px;
-  padding:15px;
-  margin-top:12px;
+.timer{font-size:34px;font-weight:900;color:var(--purple)}
+.memory-grid{
+  display:grid;grid-template-columns:repeat(4,80px);gap:10px;justify-content:center
 }
-
-.edit-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.memory-card{
+  width:80px;height:80px;border-radius:12px;background:#ddd5ff;
+  display:flex;align-items:center;justify-content:center;font-weight:900;
+  cursor:pointer
 }
-
-.edit-grid input{
-  width:100%;
-  border:2px solid #e8e1fb;
-  border-radius:12px;
-  padding:11px 12px;
-  outline:none;
-}
-
-.edit-grid input:focus{
-  border-color:var(--purple);
-}
-
-.edit-actions{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-/* FLASHCARDS */
-
-.flashcard{
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  cursor:pointer;
-  background:linear-gradient(135deg,#fff,#f2eeff);
-  border-radius:28px;
-  padding:30px;
-}
-
-.flash-main{
-  font-size:43px;
-  font-weight:900;
-}
-
-.flash-hint{
-  color:var(--muted);
-  margin-top:12px;
-}
-
-/* QUIZ */
-
-.quiz-option{
-  width:100%;
-  padding:15px;
-  margin-bottom:10px;
-  border-radius:14px;
-  background:#f5f1ff;
-  color:var(--ink);
-  text-align:left;
-  font-weight:800;
-}
-
-.quiz-option:hover{
-  background:#eae3ff;
-}
-
-/* SHOP */
-
-.shop-card{
-  position:relative;
-  overflow:hidden;
-  min-height:220px;
-  display:flex;
-  flex-direction:column;
-}
-
-.shop-badge{
-  position:absolute;
-  top:15px;
-  right:15px;
-  background:#fff1a9;
-  color:#916d00;
-  padding:6px 9px;
-  border-radius:9px;
-  font-size:11px;
-  font-weight:900;
-}
-
-.shop-icon{
-  font-size:40px;
-  margin-bottom:8px;
-}
-
-.shop-amount{
-  font-size:27px;
-  font-weight:900;
-}
-
-.shop-description{
-  color:var(--muted);
-  font-size:13px;
-  flex:1;
-  margin:6px 0 15px;
-}
-
-.shop-price{
-  font-weight:900;
-  color:var(--purple);
-  margin-bottom:10px;
-}
-
-/* STREAK */
-
-.streak-big{
-  text-align:center;
-  font-size:75px;
-  font-weight:900;
-  color:#ff8a3d;
-}
-
-.freeze-card{
-  background:linear-gradient(135deg,#eaf7ff,#f3edff);
-}
-
-.freeze-count{
-  font-size:42px;
-  font-weight:900;
-  color:#548bd0;
-}
-
-/* GAMES */
-
-.game-card{
-  text-align:center;
-  min-height:230px;
-}
-
-.game-icon{
-  font-size:55px;
-}
-
-/* ADMIN */
-
-.admin-modal,
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(35,25,65,.5);
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-card{
-  background:white;
-  width:min(850px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:25px;
-  padding:25px;
-  box-shadow:0 30px 80px rgba(20,10,50,.3);
-}
-
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-.close-btn{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:#f4f0ff;
-  color:var(--purple);
-  font-weight:900;
-}
-
-.admin-section{
-  padding:18px 0;
-  border-top:1px solid #eeeafa;
-}
-
-.admin-section h3{
-  margin-top:0;
-}
-
-.admin-stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.admin-stat{
-  background:#f7f4ff;
-  padding:15px;
-  border-radius:15px;
-}
-
-.code-list{
-  display:grid;
-  gap:8px;
-  margin-top:12px;
-}
-
-.code-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  background:#f8f6ff;
-  border-radius:13px;
-  padding:12px;
-  font-size:13px;
-}
-
-/* TOAST */
-
+.memory-card.open{background:#fff0b0}
 .toast{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  background:#30264b;
-  color:white;
-  padding:14px 18px;
-  border-radius:14px;
-  box-shadow:0 15px 40px rgba(0,0,0,.2);
-  z-index:200;
-  transform:translateY(120px);
-  opacity:0;
-  transition:.25s;
+  position:fixed;right:25px;bottom:25px;background:#30264b;color:white;
+  padding:14px 18px;border-radius:14px;z-index:100;display:none
 }
-
-.toast.show{
-  transform:translateY(0);
-  opacity:1;
+.modal{
+  position:fixed;inset:0;background:rgba(25,18,50,.5);display:none;
+  align-items:center;justify-content:center;z-index:50;padding:20px
 }
-
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-  .grid-4{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .sidebar{
-    width:190px;
-  }
+.modal-box{background:#fff;border-radius:22px;padding:25px;width:min(520px,100%)}
+.auth{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#eee9ff,#fff4fa)
 }
-
-@media(max-width:760px){
-
-  .topbar{
-    padding:0 10px;
-    gap:7px;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  .name-input{
-    display:none;
-  }
-
-  .coin-pill,
-  .streak-pill{
-    font-size:12px;
-    padding:8px 9px;
-  }
-
-  .layout{
-    display:block;
-  }
-
-  .sidebar{
-    width:100%;
-    border-right:0;
-    border-bottom:1px solid #eeeafa;
-    padding:8px;
-    display:flex;
-    overflow-x:auto;
-    gap:4px;
-  }
-
-  .nav-title{
-    display:none;
-  }
-
-  .nav-btn{
-    min-width:max-content;
-    margin:0;
-  }
-
-  .main{
-    padding:17px;
-  }
-
-  .grid-4,
-  .grid-3,
-  .grid-2{
-    grid-template-columns:1fr;
-  }
-
-  .word-display{
-    font-size:36px;
-  }
-
-  .admin-stats{
-    grid-template-columns:1fr;
-  }
-
-  .edit-grid{
-    grid-template-columns:1fr;
-  }
-
-  .word-row{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .word-actions{
-    width:100%;
-  }
+.auth-box{background:#fff;width:min(440px,92%);padding:35px;border-radius:28px;box-shadow:var(--shadow)}
+.hidden{display:none!important}
+.progress{height:12px;background:#eee8f7;border-radius:20px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--purple)}
+.offer{display:flex;justify-content:space-between;align-items:center;gap:15px}
+small{color:var(--muted)}
+@media(max-width:900px){
+  .sidebar{width:80px}.logo{font-size:0}.logo:first-letter{font-size:28px}
+  .nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:20px}
+  .main{margin-left:80px;width:calc(100% - 80px)}
+  .grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .topbar{padding:0 12px}.content{padding:16px}.grid,.grid2{grid-template-columns:1fr}
+  .word-row{grid-template-columns:1fr}.big-word{font-size:36px}
+  .choices{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(4,65px)}
+  .memory-card{width:65px;height:65px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- =====================================================
-     AUTH
-===================================================== -->
-
-<div id="authScreen" class="auth">
-
-  <div class="auth-card">
-
-    <div class="logo-big">Vocaboo ✨</div>
-
-    <div class="auth-subtitle">
-      Deine spielerische Vokabel-App
+<div id="auth" class="auth">
+  <div class="auth-box">
+    <div class="logo">Vocaboo ✨</div>
+    <h1 id="authTitle">Willkommen!</h1>
+    <p id="authText">Melde dich an oder erstelle kostenlos einen Account.</p>
+    <div class="form">
+      <input id="username" placeholder="Benutzername">
+      <input id="password" type="password" placeholder="Passwort">
+      <input id="playerName" placeholder="Dein Anzeigename (optional)">
+      <button class="btn" id="authBtn">Registrieren</button>
+      <button class="btn secondary" id="switchAuth">Ich habe schon einen Account</button>
     </div>
-
-    <div class="auth-tabs">
-
-      <button
-        id="loginTab"
-        class="auth-tab active"
-        onclick="showAuth('login')"
-      >
-        Anmelden
-      </button>
-
-      <button
-        id="registerTab"
-        class="auth-tab"
-        onclick="showAuth('register')"
-      >
-        Registrieren
-      </button>
-
-    </div>
-
-
-    <div id="loginForm">
-
-      <div class="field">
-        <label>Benutzername</label>
-        <input
-          id="loginUsername"
-          placeholder="Dein Benutzername"
-        >
-      </div>
-
-      <div class="field">
-        <label>Passwort</label>
-        <input
-          id="loginPassword"
-          type="password"
-          placeholder="Dein Passwort"
-        >
-      </div>
-
-      <button
-        class="primary-btn"
-        onclick="login()"
-      >
-        Einloggen 🚀
-      </button>
-
-    </div>
-
-
-    <div id="registerForm" class="hidden">
-
-      <div class="field">
-        <label>Benutzername</label>
-        <input
-          id="registerUsername"
-          placeholder="z. B. Max123"
-        >
-      </div>
-
-      <div class="field">
-        <label>Passwort</label>
-        <input
-          id="registerPassword"
-          type="password"
-          placeholder="Mindestens 4 Zeichen"
-        >
-      </div>
-
-      <div class="field">
-        <label>Name</label>
-        <input
-          id="registerName"
-          placeholder="Wie sollen wir dich nennen?"
-        >
-      </div>
-
-      <button
-        class="primary-btn"
-        onclick="register()"
-      >
-        Kostenlos registrieren 🎉
-      </button>
-
-      <div class="auth-info">
-        🎁 Jeder neue Account erhält automatisch
-        <strong>10.000.000 virtuelle Coins</strong>.
-        Du brauchst keinen Starter-Code.
-      </div>
-
-    </div>
-
+    <p style="font-size:13px;margin-top:15px">Neue Accounts erhalten automatisch <b>10.000.000 virtuelle Coins</b>.</p>
   </div>
-
 </div>
-
-
-<!-- =====================================================
-     APP
-===================================================== -->
 
 <div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="logo">Vocaboo ✨</div>
+    <div class="nav">
+      <button data-screen="home">🏠 Startseite</button>
+      <button data-screen="learn">🧠 Lernen</button>
+      <button data-screen="words">📚 Meine Wörter</button>
+      <button data-screen="cards">🃏 Karteikarten</button>
+      <button data-screen="quiz">❓ Quiz</button>
+      <button data-screen="write">✍️ Schreiben</button>
+      <button data-screen="minigames">🎮 Mini-Games</button>
+      <button data-screen="shop">🛍️ Shop</button>
+      <button data-screen="collection">🏆 Sammlung</button>
+    </div>
+  </aside>
 
-<header class="topbar">
-
-  <div class="logo">
-    Vocaboo ✨
-  </div>
-
-  <input
-    id="playerName"
-    class="name-input"
-    placeholder="Dein Name"
-    onchange="saveName()"
-  >
-
-  <div class="top-spacer"></div>
-
-  <button
-    class="admin-star"
-    onclick="adminStarClick()"
-  >
-    ⭐
-  </button>
-
-  <div class="streak-pill">
-    🔥 <span id="topStreak">0</span>
-  </div>
-
-  <div class="coin-pill">
-    🪙 <span id="topCoins">0</span>
-  </div>
-
-</header>
-
-
-<div class="layout">
-
-<aside class="sidebar">
-
-  <div class="nav-title">
-    Menü
-  </div>
-
-  <button
-    class="nav-btn active"
-    data-screen="home"
-    onclick="showScreen('home')"
-  >
-    🏠 Startseite
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="learn"
-    onclick="showScreen('learn')"
-  >
-    📚 Lernen
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="words"
-    onclick="showScreen('words')"
-  >
-    📝 Meine Wörter
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="cards"
-    onclick="showScreen('cards')"
-  >
-    🃏 Karteikarten
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="quiz"
-    onclick="showScreen('quiz')"
-  >
-    🧠 Quiz
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="write"
-    onclick="showScreen('write')"
-  >
-    ✍️ Schreiben
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="minigames"
-    onclick="showScreen('minigames')"
-  >
-    🎮 Mini-Games
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="shop"
-    onclick="showScreen('shop')"
-  >
-    🛒 Shop
-  </button>
-
-  <button
-    class="nav-btn"
-    data-screen="collection"
-    onclick="showScreen('collection')"
-  >
-    🏆 Sammlung
-  </button>
-
-  <div class="nav-title">
-    Account
-  </div>
-
-  <button
-    class="nav-btn"
-    onclick="logout()"
-  >
-    🚪 Ausloggen
-  </button>
-
-</aside>
-
-
-<main class="main">
-
-
-<!-- =====================================================
-     HOME
-===================================================== -->
-
-<section
-  id="screen-home"
-  class="screen active"
->
-
-  <div class="hero">
-
-    <h2 id="welcomeTitle">
-      Willkommen bei Vocaboo! ✨
-    </h2>
-
-    <p>
-      Lerne Wörter, halte deinen Streak
-      und sammle virtuelle Coins.
-    </p>
-
-    <button
-      class="primary-btn"
-      onclick="showScreen('learn')"
-    >
-      Jetzt lernen →
-    </button>
-
-  </div>
-
-
-  <div class="grid grid-4">
-
-    <div class="card stat-card">
-      <div class="stat-icon">🪙</div>
-      <div
-        id="homeCoins"
-        class="stat-number"
-      >
-        0
+  <main class="main">
+    <header class="topbar">
+      <div><b>Vocaboo</b></div>
+      <div class="top-actions">
+        <input class="nameInput" id="nameInput" placeholder="Name">
+        <span class="coins">🪙 <span id="coinTop">0</span></span>
+        <button class="star" id="adminTrigger">⭐</button>
       </div>
-      <div class="stat-label">
-        Coins
-      </div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-icon">🔥</div>
-      <div
-        id="homeStreak"
-        class="stat-number"
-      >
-        0
-      </div>
-      <div class="stat-label">
-        Tage Streak
-      </div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-icon">📖</div>
-      <div
-        id="homeWords"
-        class="stat-number"
-      >
-        0
-      </div>
-      <div class="stat-label">
-        Wörter
-      </div>
-    </div>
-
-    <div class="card stat-card">
-      <div class="stat-icon">⭐</div>
-      <div
-        id="homeXP"
-        class="stat-number"
-      >
-        0
-      </div>
-      <div class="stat-label">
-        XP
-      </div>
-    </div>
-
-  </div>
-
-
-  <br>
-
-
-  <div class="grid grid-2">
-
-    <div class="card">
-
-      <h2>
-        🔥 Dein Streak
-      </h2>
-
-      <p>
-        Lerne jeden Tag, damit deine Serie weiterläuft.
-      </p>
-
-      <div class="streak-big">
-        🔥
-        <span id="homeStreakBig">0</span>
-      </div>
-
-      <div
-        style="
-          text-align:center;
-          color:var(--muted)
-        "
-      >
-        bester Streak:
-        <strong id="bestStreak">0</strong>
-        Tage
-      </div>
-
-    </div>
-
-
-    <div class="card freeze-card">
-
-      <h2>
-        🧊 Streak auf Eis
-      </h2>
-
-      <p>
-        Schütze deinen Streak vor einem verpassten Tag.
-      </p>
-
-      <div class="freeze-count">
-        🧊
-        <span id="freezeCount">0</span>
-      </div>
-
-      <p style="color:var(--muted)">
-        Preis:
-        <strong>90.000.000 Coins</strong>
-      </p>
-
-      <button
-        class="primary-btn"
-        onclick="buyFreeze()"
-      >
-        Streak-Eis kaufen
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     LEARN
-===================================================== -->
-
-<section
-  id="screen-learn"
-  class="screen"
->
-
-  <h1 class="page-title">
-    📚 Lernen
-  </h1>
-
-  <p class="page-subtitle">
-    Lernen ist kostenlos.
-    Nach jeder abgeschlossenen Lerneinheit gibt es
-    <strong>+1.000.000 Coins</strong>.
-  </p>
-
-
-  <div class="card learn-box">
-
-    <div style="color:var(--muted)">
-      Wort
-      <span id="learnIndex">0</span>
-      /
-      <span id="learnTotal">0</span>
-    </div>
-
-    <div
-      id="learnWord"
-      class="word-display"
-    >
-      Noch keine Wörter
-    </div>
-
-    <div
-      id="learnTranslation"
-      class="translation"
-    >
-      Importiere zuerst einige Wörter.
-    </div>
-
-
-    <div class="answer-buttons">
-
-      <button
-        class="know-btn"
-        onclick="finishLearning(true)"
-      >
-        ✓ Gewusst
-      </button>
-
-      <button
-        class="repeat-btn"
-        onclick="finishLearning(false)"
-      >
-        ↻ Nochmal
-      </button>
-
-    </div>
-
-
-    <br>
-
-
-    <button
-      class="secondary-btn"
-      onclick="startLearning()"
-    >
-      Neue Lerneinheit
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     WORDS
-===================================================== -->
-
-<section
-  id="screen-words"
-  class="screen"
->
-
-  <h1 class="page-title">
-    📝 Meine Wörter
-  </h1>
-
-  <p class="page-subtitle">
-    Importiere ganze Wortlisten und bearbeite jedes Wort
-    jederzeit.
-  </p>
-
-
-  <div class="card import-box">
-
-    <h2>
-      📥 Wortliste importieren
-    </h2>
-
-    <div class="import-help">
-
-      Erlaubte Formate:
-
-      <br>
-
-      <strong>apple</strong>
-
-      <br>
-
-      <strong>apple = Apfel</strong>
-
-      <br>
-
-      <strong>apple; Apfel</strong>
-
-      <br><br>
-
-      Wenn nur das englische Wort vorhanden ist,
-      wird automatisch eine Übersetzung gesucht.
-
-    </div>
-
-
-    <div class="field">
-
-      <textarea
-        id="wordImport"
-        placeholder="apple
-house
-school
-beautiful = schön"
-      ></textarea>
-
-    </div>
-
-
-    <div
-      style="
-        display:flex;
-        gap:10px;
-        flex-wrap:wrap;
-        align-items:center
-      "
-    >
-
-      <button
-        class="primary-btn"
-        style="width:auto"
-        onclick="importWords()"
-      >
-        Wörter importieren ✨
-      </button>
-
-      <span
-        style="
-          color:var(--muted);
-          font-size:13px
-        "
-      >
-        Kosten:
-        <strong id="wordImportCostLabel">
-          100
-        </strong>
-        Coins pro Wort
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <div
-    class="card"
-    style="margin-top:20px"
-  >
-
-    <h2>
-      Meine Wörter
-    </h2>
-
-    <div
-      id="wordList"
-      class="word-list"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     FLASHCARDS
-===================================================== -->
-
-<section
-  id="screen-cards"
-  class="screen"
->
-
-  <h1 class="page-title">
-    🃏 Karteikarten
-  </h1>
-
-  <p class="page-subtitle">
-    Klicke auf die Karte, um die Übersetzung zu sehen.
-  </p>
-
-
-  <div class="card">
-
-    <div
-      id="flashcard"
-      class="flashcard"
-      onclick="flipCard()"
-    >
-
-      <div>
-
-        <div
-          id="flashMain"
-          class="flash-main"
-        >
-          Keine Wörter
-        </div>
-
-        <div
-          id="flashHint"
-          class="flash-hint"
-        >
-          Importiere zuerst Wörter.
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <br>
-
-
-    <div
-      style="
-        display:flex;
-        justify-content:center;
-        gap:10px
-      "
-    >
-
-      <button
-        class="secondary-btn"
-        onclick="previousCard()"
-      >
-        ← Zurück
-      </button>
-
-      <button
-        class="primary-btn"
-        style="width:auto"
-        onclick="nextCard()"
-      >
-        Weiter →
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     QUIZ
-===================================================== -->
-
-<section
-  id="screen-quiz"
-  class="screen"
->
-
-  <h1 class="page-title">
-    🧠 Quiz
-  </h1>
-
-  <p class="page-subtitle">
-    Teste dein Wissen.
-  </p>
-
-
-  <div
-    class="card"
-    style="
-      max-width:800px;
-      margin:auto;
-      text-align:center
-    "
-  >
-
-    <div
-      id="quizQuestion"
-      class="word-display"
-    >
-      Keine Wörter
-    </div>
-
-    <div id="quizOptions"></div>
-
-    <div
-      id="quizResult"
-      style="
-        font-weight:900;
-        margin-top:15px
-      "
-    ></div>
-
-    <br>
-
-    <button
-      class="secondary-btn"
-      onclick="newQuiz()"
-    >
-      Neues Quiz
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     WRITE
-===================================================== -->
-
-<section
-  id="screen-write"
-  class="screen"
->
-
-  <h1 class="page-title">
-    ✍️ Schreiben
-  </h1>
-
-  <p class="page-subtitle">
-    Schreibe die Übersetzung selbst.
-  </p>
-
-
-  <div
-    class="card"
-    style="
-      max-width:700px;
-      margin:auto
-    "
-  >
-
-    <div
-      id="writeWord"
-      class="word-display"
-      style="text-align:center"
-    >
-      Keine Wörter
-    </div>
-
-
-    <div class="field">
-
-      <input
-        id="writeAnswer"
-        placeholder="Deine Übersetzung"
-      >
-
-    </div>
-
-
-    <button
-      class="primary-btn"
-      onclick="checkWrite()"
-    >
-      Antwort prüfen
-    </button>
-
-
-    <div
-      id="writeResult"
-      style="
-        text-align:center;
-        margin-top:15px;
-        font-weight:900
-      "
-    ></div>
-
-
-    <br>
-
-
-    <button
-      class="secondary-btn"
-      onclick="newWriteWord()"
-    >
-      Neues Wort
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     MINI GAMES
-===================================================== -->
-
-<section
-  id="screen-minigames"
-  class="screen"
->
-
-  <h1 class="page-title">
-    🎮 Mini-Games
-  </h1>
-
-  <p class="page-subtitle">
-    Spiele kleine Lernspiele mit deinen Coins.
-  </p>
-
-
-  <div class="grid grid-3">
-
-    <div class="card game-card">
-
-      <div class="game-icon">
-        ⚡
-      </div>
-
-      <h2>
-        Word-Blitz
-      </h2>
-
-      <p>
-        Eine schnelle Lernrunde.
-      </p>
-
-      <strong>
-        500 Coins
-      </strong>
-
-      <br><br>
-
-      <button
-        class="primary-btn"
-        onclick="playGame('Word-Blitz',500)"
-      >
-        Spielen
-      </button>
-
-    </div>
-
-
-    <div class="card game-card">
-
-      <div class="game-icon">
-        🪙
-      </div>
-
-      <h2>
-        Coin Catch
-      </h2>
-
-      <p>
-        Sammle virtuelle Coins.
-      </p>
-
-      <strong>
-        750 Coins
-      </strong>
-
-      <br><br>
-
-      <button
-        class="primary-btn"
-        onclick="playGame('Coin Catch',750)"
-      >
-        Spielen
-      </button>
-
-    </div>
-
-
-    <div class="card game-card">
-
-      <div class="game-icon">
-        🦊
-      </div>
-
-      <h2>
-        Reaction Fox
-      </h2>
-
-      <p>
-        Wie schnell kannst du reagieren?
-      </p>
-
-      <strong>
-        400 Coins
-      </strong>
-
-      <br><br>
-
-      <button
-        class="primary-btn"
-        onclick="playGame('Reaction Fox',400)"
-      >
-        Spielen
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     SHOP
-===================================================== -->
-
-<section
-  id="screen-shop"
-  class="screen"
->
-
-  <h1 class="page-title">
-    🛒 Coin-Shop
-  </h1>
-
-  <p class="page-subtitle">
-    Virtuelle Coins und Streak-Extras.
-  </p>
-
-
-  <div
-    class="grid grid-4"
-    id="shopGrid"
-  ></div>
-
-
-  <br>
-
-
-  <div class="card">
-
-    <h2>
-      🎟️ Coin-Code einlösen
-    </h2>
-
-    <div
-      style="
-        display:flex;
-        gap:10px;
-        flex-wrap:wrap
-      "
-    >
-
-      <input
-        id="redeemCode"
-        class="name-input"
-        style="width:250px"
-        placeholder="Code eingeben"
-      >
-
-      <button
-        class="primary-btn"
-        style="width:auto"
-        onclick="redeemCode()"
-      >
-        Einlösen
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     COLLECTION
-===================================================== -->
-
-<section
-  id="screen-collection"
-  class="screen"
->
-
-  <h1 class="page-title">
-    🏆 Sammlung
-  </h1>
-
-  <p class="page-subtitle">
-    Deine Vocaboo-Statistiken.
-  </p>
-
-
-  <div class="grid grid-3">
-
-    <div class="card">
-
-      <h2>
-        🔥 Streak
-      </h2>
-
-      <div
-        class="stat-number"
-        id="collectionStreak"
-      >
-        0
-      </div>
-
-      <p class="stat-label">
-        Aktuelle Tage
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>
-        🏅 Rekord
-      </h2>
-
-      <div
-        class="stat-number"
-        id="collectionBest"
-      >
-        0
-      </div>
-
-      <p class="stat-label">
-        Bester Streak
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>
-        🧊 Eis
-      </h2>
-
-      <div
-        class="stat-number"
-        id="collectionFreeze"
-      >
-        0
-      </div>
-
-      <p class="stat-label">
-        Streak-Eis
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-</main>
-</div>
+    </header>
+
+    <section class="content">
+      <div id="home" class="screen"></div>
+      <div id="learn" class="screen hidden"></div>
+      <div id="words" class="screen hidden"></div>
+      <div id="cards" class="screen hidden"></div>
+      <div id="quiz" class="screen hidden"></div>
+      <div id="write" class="screen hidden"></div>
+      <div id="minigames" class="screen hidden"></div>
+      <div id="shop" class="screen hidden"></div>
+      <div id="collection" class="screen hidden"></div>
+    </section>
+  </main>
 </div>
 
-
-<!-- =====================================================
-     ADMIN LOGIN
-===================================================== -->
-
-<div
-  id="adminLoginModal"
-  class="admin-modal hidden"
->
-
-  <div
-    class="modal-card"
-    style="max-width:430px"
-  >
-
-    <div class="modal-head">
-
-      <h2>
-        ⭐ Admin Login
-      </h2>
-
-      <button
-        class="close-btn"
-        onclick="closeAdminLogin()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Admin-PIN
-      </label>
-
-      <input
-        id="adminPinInput"
-        type="password"
-        placeholder="PIN"
-      >
-
-    </div>
-
-
-    <button
-      class="primary-btn"
-      onclick="adminLogin()"
-    >
-      Admin öffnen
-    </button>
-
-  </div>
-
+<div id="modal" class="modal">
+  <div class="modal-box" id="modalBox"></div>
 </div>
 
-
-<!-- =====================================================
-     ADMIN PANEL
-===================================================== -->
-
-<div
-  id="adminPanel"
-  class="admin-modal hidden"
->
-
-  <div class="modal-card">
-
-    <div class="modal-head">
-
-      <div>
-
-        <h2>
-          ⭐ Vocaboo Admin
-        </h2>
-
-        <div style="color:var(--muted)">
-          Einstellungen und virtuelle Coin-Codes
-        </div>
-
-      </div>
-
-      <button
-        class="close-btn"
-        onclick="closeAdminPanel()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="admin-stats">
-
-      <div class="admin-stat">
-
-        <strong>
-          Accounts
-        </strong>
-
-        <div id="adminUserCount">
-          0
-        </div>
-
-      </div>
-
-
-      <div class="admin-stat">
-
-        <strong>
-          Generierte Codes
-        </strong>
-
-        <div id="adminCodeCount">
-          0
-        </div>
-
-      </div>
-
-
-      <div class="admin-stat">
-
-        <strong>
-          Aktueller Coin-Bestand
-        </strong>
-
-        <div id="adminCurrentCoins">
-          0
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="admin-section">
-
-      <h3>
-        ⚙️ Preise
-      </h3>
-
-
-      <div class="grid grid-3">
-
-        <div class="field">
-
-          <label>
-            Import-Kosten pro Wort
-          </label>
-
-          <input
-            id="settingImportCost"
-            type="number"
-            min="0"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Streak-Eis Preis
-          </label>
-
-          <input
-            id="settingFreezeCost"
-            type="number"
-            min="0"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Quiz-Belohnung
-          </label>
-
-          <input
-            id="settingQuizReward"
-            type="number"
-            min="0"
-          >
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="primary-btn"
-        style="width:auto"
-        onclick="saveAdminSettings()"
-      >
-        Einstellungen speichern
-      </button>
-
-    </div>
-
-
-    <div class="admin-section">
-
-      <h3>
-        🎟️ Coin-Code erstellen
-      </h3>
-
-
-      <div class="grid grid-3">
-
-        <div class="field">
-
-          <label>
-            Coins
-          </label>
-
-          <input
-            id="codeCoins"
-            type="number"
-            min="1"
-            value="1000000"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Max. Einlösungen
-          </label>
-
-          <input
-            id="codeMaxUses"
-            type="number"
-            min="1"
-            value="10"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Anzahl Codes
-          </label>
-
-          <input
-            id="codeQuantity"
-            type="number"
-            min="1"
-            max="100"
-            value="1"
-          >
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="primary-btn"
-        style="width:auto"
-        onclick="generateCodes()"
-      >
-        Codes erstellen
-      </button>
-
-
-      <div
-        id="generatedCodes"
-        class="code-list"
-      ></div>
-
-    </div>
-
-
-    <div class="admin-section">
-
-      <h3>
-        🔐 Admin-PIN ändern
-      </h3>
-
-
-      <div class="field">
-
-        <input
-          id="newAdminPin"
-          type="password"
-          placeholder="Neue PIN"
-        >
-
-      </div>
-
-
-      <button
-        class="secondary-btn"
-        onclick="changeAdminPin()"
-      >
-        PIN ändern
-      </button>
-
-    </div>
-
-
-    <div class="admin-section">
-
-      <h3>
-        🗑️ Code-Verwaltung
-      </h3>
-
-      <button
-        class="danger-btn"
-        onclick="deleteAllCodes()"
-      >
-        Alle generierten Codes löschen
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<div
-  id="toast"
-  class="toast"
-></div>
-
+<div id="toast" class="toast"></div>
 
 <script>
+"use strict";
 
-/* =========================================================
-   STORAGE
-========================================================= */
+const USERS_KEY="vocaboo_users";
+const CURRENT_KEY="vocaboo_current_user";
+const SETTINGS_KEY="vocaboo_admin_settings";
+const PIN_KEY="vocaboo_admin_pin";
+const CODES_KEY="vocaboo_generated_codes";
 
-const USERS_KEY = "vocaboo_users_v5";
-const CURRENT_USER_KEY = "vocaboo_current_user_v5";
-const SETTINGS_KEY = "vocaboo_admin_settings_v5";
-const ADMIN_PIN_KEY = "vocaboo_admin_pin_v5";
-const CODES_KEY = "vocaboo_generated_codes_v5";
-
-
-const DEFAULT_SETTINGS = {
-
-  wordImportCost:100,
-
-  freezeCost:90000000,
-
-  quizReward:250000
-
+const defaultSettings={
+  wordImportCost:1000,
+  learnReward:1000000,
+  streakFreezeCost:90000000
 };
 
+let settings=JSON.parse(localStorage.getItem(SETTINGS_KEY)||"null")||defaultSettings;
+let users=JSON.parse(localStorage.getItem(USERS_KEY)||"{}");
+let currentUser=localStorage.getItem(CURRENT_KEY);
+let authMode="register";
+let currentScreen="home";
+let learning=null;
+let quizState=null;
+let writeState=null;
+let memoryState=null;
+let blitzState=null;
+let reactionState=null;
+let coinCatchState=null;
 
-let settings = loadSettings();
-let users = loadUsers();
+const $=id=>document.getElementById(id);
+const money=n=>Number(n||0).toLocaleString("de-DE");
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+"_"+Math.random();
+const today=()=>new Date().toISOString().slice(0,10);
 
-let currentUsername =
-  localStorage.getItem(CURRENT_USER_KEY) || "";
-
-let data = null;
-
-let learningIndex = 0;
-let cardIndex = 0;
-let cardFlipped = false;
-
-let quizWord = null;
-let quizAnswered = false;
-
-let writeWord = null;
-
-let adminClicks = 0;
-let adminClickTimer = null;
-
-
-/* =========================================================
-   STORAGE FUNCTIONS
-========================================================= */
-
-function loadUsers(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(USERS_KEY)
-    ) || {};
-
-  }catch(e){
-
-    return {};
-
-  }
-
+function saveUsers(){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
+function saveSettings(){localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings))}
+function user(){return users[currentUser]}
+function saveUser(){if(currentUser){users[currentUser]=user();saveUsers()}}
+function toast(msg){
+  $("toast").textContent=msg;$("toast").style.display="block";
+  setTimeout(()=>$("toast").style.display="none",2500);
 }
-
-
-function saveUsers(){
-
-  localStorage.setItem(
-    USERS_KEY,
-    JSON.stringify(users)
-  );
-
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[m]));
 }
-
-
-function loadSettings(){
-
-  try{
-
-    return {
-      ...DEFAULT_SETTINGS,
-      ...(JSON.parse(
-        localStorage.getItem(SETTINGS_KEY)
-      ) || {})
-    };
-
-  }catch(e){
-
-    return {...DEFAULT_SETTINGS};
-
-  }
-
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function randomWord(){
+  const w=user().words||[];
+  return w.length?w[Math.floor(Math.random()*w.length)]:null;
 }
-
-
-function saveSettings(){
-
-  localStorage.setItem(
-    SETTINGS_KEY,
-    JSON.stringify(settings)
-  );
-
+function ensureUserShape(u){
+  u.coins ??=10000000;
+  u.xp ??=0;
+  u.words ??=[];
+  u.streak ??=0;
+  u.bestStreak ??=0;
+  u.lastStudyDate ??="";
+  u.streakFreezes ??=0;
+  u.claimedOffers ??=[];
+  u.usedCodes ??=[];
+  u.stats ??={sessions:0,correct:0,answers:0};
+  return u;
 }
-
-
-function loadCodes(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(CODES_KEY)
-    ) || [];
-
-  }catch(e){
-
-    return [];
-
-  }
-
+function daysBetween(a,b){
+  if(!a||!b)return 999;
+  const x=new Date(a+"T00:00:00"),y=new Date(b+"T00:00:00");
+  return Math.round((y-x)/86400000);
 }
-
-
-function saveCodes(codes){
-
-  localStorage.setItem(
-    CODES_KEY,
-    JSON.stringify(codes)
-  );
-
-}
-
-
-function saveCurrentUser(){
-
-  if(!currentUsername || !data){
-    return;
-  }
-
-  users[currentUsername] = data;
-
-  saveUsers();
-
-}
-
-
-function formatNumber(number){
-
-  return Number(number || 0)
-    .toLocaleString("de-DE");
-
-}
-
-
-function todayString(){
-
-  const d = new Date();
-
-  const y = d.getFullYear();
-
-  const m =
-    String(d.getMonth()+1)
-      .padStart(2,"0");
-
-  const day =
-    String(d.getDate())
-      .padStart(2,"0");
-
-  return `${y}-${m}-${day}`;
-
-}
-
-
-function dateDiff(a,b){
-
-  const aa =
-    new Date(a+"T00:00:00");
-
-  const bb =
-    new Date(b+"T00:00:00");
-
-  return Math.round(
-    (bb-aa)/(1000*60*60*24)
-  );
-
-}
-
-
-/* =========================================================
-   USER DATA
-========================================================= */
-
-function createUserData(name){
-
-  return {
-
-    password:"",
-
-    playerName:name || "",
-
-    coins:10000000,
-
-    xp:0,
-
-    words:[],
-
-    known:[],
-
-    usedCodes:[],
-
-    streak:0,
-
-    bestStreak:0,
-
-    lastStudyDate:"",
-
-    freezeCount:0,
-
-    learningSessions:0,
-
-    quizCorrect:0,
-
-    gamesPlayed:0,
-
-    createdAt:new Date().toISOString()
-
-  };
-
-}
-
-
-function normalizeUserData(){
-
-  const defaults =
-    createUserData(
-      data.playerName || currentUsername
-    );
-
-  for(const key of Object.keys(defaults)){
-
-    if(data[key] === undefined){
-
-      data[key] =
-        defaults[key];
-
-    }
-
-  }
-
-  /*
-    Alte Wörterdaten werden automatisch ergänzt,
-    falls die neue Version zusätzliche Felder braucht.
-  */
-
-  data.words =
-    Array.isArray(data.words)
-      ? data.words
-      : [];
-
-  data.words =
-    data.words.map(word => ({
-
-      id:
-        word.id ??
-        Date.now()+Math.random(),
-
-      english:
-        word.english || "",
-
-      german:
-        word.german || ""
-
-    }));
-
-  saveCurrentUser();
-
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-function showAuth(mode){
-
-  const loginTab =
-    document.getElementById("loginTab");
-
-  const registerTab =
-    document.getElementById("registerTab");
-
-  const loginForm =
-    document.getElementById("loginForm");
-
-  const registerForm =
-    document.getElementById("registerForm");
-
-
-  if(mode === "login"){
-
-    loginTab.classList.add("active");
-    registerTab.classList.remove("active");
-
-    loginForm.classList.remove("hidden");
-    registerForm.classList.add("hidden");
-
+function markStudy(){
+  const u=user(),t=today();
+  if(u.lastStudyDate===t)return;
+  const gap=daysBetween(u.lastStudyDate,t);
+
+  if(!u.lastStudyDate){
+    u.streak=1;
+  }else if(gap===1){
+    u.streak++;
+  }else if(gap===2 && u.streakFreezes>0){
+    u.streakFreezes--;
+    u.streak++;
+    toast("🧊 Dein Streak-Eis hat deine Streak gerettet!");
   }else{
-
-    loginTab.classList.remove("active");
-    registerTab.classList.add("active");
-
-    loginForm.classList.add("hidden");
-    registerForm.classList.remove("hidden");
-
+    u.streak=1;
   }
+  u.bestStreak=Math.max(u.bestStreak,u.streak);
+  u.lastStudyDate=t;
+  saveUser();
+}
+function addXP(n){user().xp+=n;saveUser()}
 
+function showScreen(name){
+  currentScreen=name;
+  document.querySelectorAll(".screen").forEach(x=>x.classList.add("hidden"));
+  $(name).classList.remove("hidden");
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));
+  render();
 }
 
-
-function register(){
-
-  const username =
-    document
-      .getElementById("registerUsername")
-      .value
-      .trim();
-
-  const password =
-    document.getElementById(
-      "registerPassword"
-    ).value;
-
-  const name =
-    document
-      .getElementById("registerName")
-      .value
-      .trim();
-
-
-  if(username.length < 3){
-
-    toast(
-      "Der Benutzername muss mindestens 3 Zeichen haben."
-    );
-
-    return;
-  }
-
-
-  if(password.length < 4){
-
-    toast(
-      "Das Passwort muss mindestens 4 Zeichen haben."
-    );
-
-    return;
-  }
-
-
-  if(users[username]){
-
-    toast(
-      "Dieser Benutzername existiert bereits."
-    );
-
-    return;
-  }
-
-
-  const newData =
-    createUserData(
-      name || username
-    );
-
-  newData.password = password;
-
-  users[username] = newData;
-
-  saveUsers();
-
-  currentUsername = username;
-
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    currentUsername
-  );
-
-  data = newData;
-
-  toast(
-    "Account erstellt! 🎉 10.000.000 Coins erhalten."
-  );
-
-  openApp();
-
+function render(){
+  if(!currentUser)return;
+  ensureUserShape(user());
+  saveUser();
+  $("coinTop").textContent=money(user().coins);
+  $("nameInput").value=user().playerName||currentUser;
+  renderHome();renderWords();renderLearn();renderCards();renderQuiz();renderWrite();renderGames();renderShop();renderCollection();
 }
 
-
-function login(){
-
-  const username =
-    document
-      .getElementById("loginUsername")
-      .value
-      .trim();
-
-  const password =
-    document.getElementById(
-      "loginPassword"
-    ).value;
-
-
-  if(!users[username]){
-
-    toast(
-      "Benutzername oder Passwort ist falsch."
-    );
-
-    return;
-  }
-
-
-  if(users[username].password !== password){
-
-    toast(
-      "Benutzername oder Passwort ist falsch."
-    );
-
-    return;
-  }
-
-
-  currentUsername = username;
-
-  data = users[username];
-
-  normalizeUserData();
-
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    currentUsername
-  );
-
-  openApp();
-
+function renderHome(){
+  const u=user();
+  $("home").innerHTML=`
+    <div class="hero">
+      <h1>Hallo ${esc(u.playerName||currentUser)}! 👋</h1>
+      <p>Willkommen zurück bei Vocaboo. Lerne Wörter und baue deine Streak auf.</p>
+      <button class="btn" onclick="showScreen('learn')">🧠 Jetzt lernen</button>
+    </div>
+    <div class="grid">
+      <div class="card"><small>Coins</small><div class="stat">${money(u.coins)}</div></div>
+      <div class="card"><small>Streak</small><div class="stat">🔥 ${u.streak}</div></div>
+      <div class="card"><small>Streak-Eis</small><div class="stat">🧊 ${u.streakFreezes}</div></div>
+      <div class="card"><small>Wörter</small><div class="stat">${u.words.length}</div></div>
+    </div>
+    <br>
+    <div class="grid2">
+      <div class="card">
+        <h2>Dein Fortschritt</h2>
+        <p>XP: <b>${money(u.xp)}</b></p>
+        <div class="progress"><span style="width:${Math.min(100,(u.xp%1000)/10)}%"></span></div>
+        <p>${u.stats.answers} Antworten · ${u.stats.correct} richtig</p>
+      </div>
+      <div class="card">
+        <h2>🎁 Lernbonus</h2>
+        <p>Eine abgeschlossene Lernrunde bringt dir:</p>
+        <h2>🪙 ${money(settings.learnReward)} Coins</h2>
+        <small>Lernen selbst kostet 0 Coins.</small>
+      </div>
+    </div>`;
 }
 
+function renderWords(){
+  const u=user();
+  $("words").innerHTML=`
+    <h1>📚 Meine Wörter</h1>
+    <p>Importiere mehrere Wörter. Neue Wörter kosten ${money(settings.wordImportCost)} Coins pro Wort. Bestehende Wörter kannst du kostenlos bearbeiten.</p>
 
-function logout(){
+    <div class="card">
+      <h2>Wörter importieren</h2>
+      <p>Eine Zeile pro Wort. Beispiele: <b>apple</b> oder <b>apple = Apfel</b></p>
+      <textarea id="importText" placeholder="apple
+house
+school = Schule
+friend"></textarea>
+      <br><br>
+      <button class="btn" onclick="importWords()">🌍 Importieren & übersetzen</button>
+    </div>
 
-  saveCurrentUser();
-
-  currentUsername = "";
-
-  data = null;
-
-  localStorage.removeItem(
-    CURRENT_USER_KEY
-  );
-
-  document
-    .getElementById("app")
-    .classList.add("hidden");
-
-  document
-    .getElementById("authScreen")
-    .classList.remove("hidden");
-
-  showAuth("login");
-
+    <br>
+    <div class="card">
+      <h2>Meine Wörter bearbeiten</h2>
+      ${u.words.length?u.words.map(w=>`
+        <div class="word-row">
+          <input id="en_${w.id}" value="${esc(w.en)}">
+          <input id="de_${w.id}" value="${esc(w.de)}">
+          <button class="btn green" onclick="saveWord('${w.id}')">Speichern</button>
+          <button class="btn red" onclick="deleteWord('${w.id}')">Löschen</button>
+        </div>`).join(""):"<p>Noch keine Wörter vorhanden.</p>"}
+    </div>`;
 }
-
-
-function openApp(){
-
-  document
-    .getElementById("authScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("app")
-    .classList.remove("hidden");
-
-  refreshStreak();
-
-  updateUI();
-
-  showScreen("home");
-
-}
-
-
-/* =========================================================
-   STREAK
-========================================================= */
-
-function refreshStreak(){
-
-  if(!data || !data.lastStudyDate){
-    return;
-  }
-
-  const today =
-    todayString();
-
-  const difference =
-    dateDiff(
-      data.lastStudyDate,
-      today
-    );
-
-
-  if(difference <= 1){
-    return;
-  }
-
-
-  if(data.freezeCount > 0){
-
-    data.freezeCount--;
-
-    data.lastStudyDate = today;
-
-    saveCurrentUser();
-
-    toast(
-      "🧊 Dein Streak wurde geschützt!"
-    );
-
-  }else{
-
-    data.streak = 0;
-
-    saveCurrentUser();
-
-  }
-
-}
-
-
-function markStudyDay(){
-
-  const today =
-    todayString();
-
-
-  if(data.lastStudyDate === today){
-    return;
-  }
-
-
-  if(!data.lastStudyDate){
-
-    data.streak = 1;
-
-  }else{
-
-    const difference =
-      dateDiff(
-        data.lastStudyDate,
-        today
-      );
-
-
-    if(difference === 1){
-
-      data.streak++;
-
-    }else{
-
-      data.streak = 1;
-
-    }
-
-  }
-
-
-  data.lastStudyDate = today;
-
-
-  if(data.streak > data.bestStreak){
-
-    data.bestStreak =
-      data.streak;
-
-  }
-
-
-  saveCurrentUser();
-
-}
-
-
-/* =========================================================
-   UI
-========================================================= */
-
-function updateUI(){
-
-  if(!data){
-    return;
-  }
-
-
-  document.getElementById(
-    "topCoins"
-  ).textContent =
-    formatNumber(data.coins);
-
-
-  document.getElementById(
-    "topStreak"
-  ).textContent =
-    formatNumber(data.streak);
-
-
-  document.getElementById(
-    "playerName"
-  ).value =
-    data.playerName || "";
-
-
-  document.getElementById(
-    "welcomeTitle"
-  ).textContent =
-    `Willkommen${
-      data.playerName
-        ? " " + data.playerName
-        : ""
-    }! ✨`;
-
-
-  document.getElementById(
-    "homeCoins"
-  ).textContent =
-    formatNumber(data.coins);
-
-
-  document.getElementById(
-    "homeStreak"
-  ).textContent =
-    formatNumber(data.streak);
-
-
-  document.getElementById(
-    "homeStreakBig"
-  ).textContent =
-    formatNumber(data.streak);
-
-
-  document.getElementById(
-    "bestStreak"
-  ).textContent =
-    formatNumber(data.bestStreak);
-
-
-  document.getElementById(
-    "homeWords"
-  ).textContent =
-    formatNumber(data.words.length);
-
-
-  document.getElementById(
-    "homeXP"
-  ).textContent =
-    formatNumber(data.xp);
-
-
-  document.getElementById(
-    "freezeCount"
-  ).textContent =
-    formatNumber(data.freezeCount);
-
-
-  document.getElementById(
-    "collectionStreak"
-  ).textContent =
-    formatNumber(data.streak);
-
-
-  document.getElementById(
-    "collectionBest"
-  ).textContent =
-    formatNumber(data.bestStreak);
-
-
-  document.getElementById(
-    "collectionFreeze"
-  ).textContent =
-    formatNumber(data.freezeCount);
-
-
-  document.getElementById(
-    "wordImportCostLabel"
-  ).textContent =
-    formatNumber(
-      settings.wordImportCost
-    );
-
-
-  renderWordList();
-
-  renderLearning();
-
-  renderFlashcard();
-
-  renderShop();
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showScreen(screen){
-
-  document
-    .querySelectorAll(".screen")
-    .forEach(el=>{
-      el.classList.remove("active");
-    });
-
-
-  document
-    .getElementById(
-      "screen-"+screen
-    )
-    .classList.add("active");
-
-
-  document
-    .querySelectorAll(
-      ".nav-btn[data-screen]"
-    )
-    .forEach(btn=>{
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.screen === screen
-      );
-
-    });
-
-
-  if(screen === "quiz"){
-    newQuiz();
-  }
-
-
-  if(screen === "write"){
-    newWriteWord();
-  }
-
-
-  if(screen === "cards"){
-    renderFlashcard();
-  }
-
-}
-
-
-/* =========================================================
-   NAME
-========================================================= */
-
-function saveName(){
-
-  if(!data){
-    return;
-  }
-
-  data.playerName =
-    document
-      .getElementById("playerName")
-      .value
-      .trim();
-
-  saveCurrentUser();
-
-  updateUI();
-
-}
-
-
-/* =========================================================
-   COINS
-========================================================= */
-
-function addCoins(amount){
-
-  amount =
-    Number(amount) || 0;
-
-  data.coins += amount;
-
-  saveCurrentUser();
-
-  updateUI();
-
-}
-
-
-function removeCoins(amount){
-
-  amount =
-    Number(amount) || 0;
-
-
-  if(data.coins < amount){
-
-    toast(
-      `Du brauchst ${formatNumber(amount)} Coins.`
-    );
-
-    return false;
-
-  }
-
-
-  data.coins -= amount;
-
-  saveCurrentUser();
-
-  updateUI();
-
-  return true;
-
-}
-
-
-/* =========================================================
-   WORD IMPORT
-========================================================= */
-
-function parseWordLine(line){
-
-  line =
-    line.trim();
-
-
-  if(!line){
-    return null;
-  }
-
-
-  let english = "";
-  let german = "";
-
-
-  if(line.includes("=")){
-
-    const parts =
-      line.split("=");
-
-    english =
-      parts.shift().trim();
-
-    german =
-      parts.join("=").trim();
-
-  }else if(line.includes(";")){
-
-    const parts =
-      line.split(";");
-
-    english =
-      parts.shift().trim();
-
-    german =
-      parts.join(";").trim();
-
-  }else if(line.includes(" - ")){
-
-    const parts =
-      line.split(" - ");
-
-    english =
-      parts.shift().trim();
-
-    german =
-      parts.join(" - ").trim();
-
-  }else{
-
-    english = line;
-
-  }
-
-
-  if(!english){
-    return null;
-  }
-
-
-  return {
-    english,
-    german
-  };
-
-}
-
-
-async function importWords(){
-
-  if(!data){
-    return;
-  }
-
-
-  const raw =
-    document
-      .getElementById("wordImport")
-      .value
-      .trim();
-
-
-  if(!raw){
-
-    toast(
-      "Bitte füge zuerst eine Wortliste ein."
-    );
-
-    return;
-  }
-
-
-  const lines =
-    raw
-      .split(/\r?\n/)
-      .map(x=>x.trim())
-      .filter(Boolean);
-
-
-  const parsed = [];
-
-
-  for(const line of lines){
-
-    const item =
-      parseWordLine(line);
-
-    if(item){
-      parsed.push(item);
-    }
-
-  }
-
-
-  if(!parsed.length){
-
-    toast(
-      "Keine gültigen Wörter gefunden."
-    );
-
-    return;
-  }
-
-
-  const cost =
-    settings.wordImportCost *
-    parsed.length;
-
-
-  if(!removeCoins(cost)){
-    return;
-  }
-
-
-  toast(
-    "Übersetzungen werden gesucht... 🌍"
-  );
-
-
-  let added = 0;
-
-
-  for(const item of parsed){
-
-    let translation =
-      item.german;
-
-
-    if(!translation){
-
-      translation =
-        await translateWord(
-          item.english
-        );
-
-    }
-
-
-    const exists =
-      data.words.some(
-        w =>
-          w.english.toLowerCase() ===
-          item.english.toLowerCase()
-      );
-
-
-    if(!exists){
-
-      data.words.push({
-
-        id:
-          Date.now() +
-          Math.random(),
-
-        english:
-          item.english,
-
-        german:
-          translation ||
-          "Übersetzung nicht gefunden",
-
-        addedAt:
-          new Date().toISOString()
-
-      });
-
-      added++;
-
-    }
-
-  }
-
-
-  saveCurrentUser();
-
-
-  document.getElementById(
-    "wordImport"
-  ).value = "";
-
-
-  updateUI();
-
-
-  toast(
-    `${added} Wörter importiert! 🎉`
-  );
-
-}
-
-
-/* =========================================================
-   AUTOMATIC TRANSLATION
-========================================================= */
-
-const localDictionary = {
-
-  apple:"Apfel",
-  house:"Haus",
-  school:"Schule",
-  book:"Buch",
-  water:"Wasser",
-  food:"Essen",
-  dog:"Hund",
-  cat:"Katze",
-  car:"Auto",
-  computer:"Computer",
-  phone:"Telefon",
-  friend:"Freund",
-  family:"Familie",
-  mother:"Mutter",
-  father:"Vater",
-  brother:"Bruder",
-  sister:"Schwester",
-  teacher:"Lehrer",
-  student:"Schüler",
-  schoolbag:"Schultasche",
-  table:"Tisch",
-  chair:"Stuhl",
-  window:"Fenster",
-  door:"Tür",
-  city:"Stadt",
-  country:"Land",
-  world:"Welt",
-  day:"Tag",
-  night:"Nacht",
-  morning:"Morgen",
-  evening:"Abend",
-  beautiful:"schön",
-  happy:"glücklich",
-  sad:"traurig",
-  fast:"schnell",
-  slow:"langsam",
-  big:"groß",
-  small:"klein",
-  good:"gut",
-  bad:"schlecht",
-  new:"neu",
-  old:"alt",
-  learn:"lernen",
-  read:"lesen",
-  write:"schreiben",
-  speak:"sprechen",
-  listen:"zuhören",
-  understand:"verstehen",
-  love:"lieben",
-  work:"arbeiten",
-  play:"spielen",
-  run:"laufen",
-  walk:"gehen"
-
-};
-
 
 async function translateWord(word){
-
-  const lower =
-    word.toLowerCase();
-
-
-  if(localDictionary[lower]){
-
-    return localDictionary[lower];
-
-  }
-
+  const dictionary={
+    apple:"Apfel",house:"Haus",school:"Schule",book:"Buch",friend:"Freund",
+    family:"Familie",water:"Wasser",food:"Essen",cat:"Katze",dog:"Hund",
+    car:"Auto",computer:"Computer",phone:"Telefon",hello:"Hallo",goodbye:"Auf Wiedersehen",
+    morning:"Morgen",night:"Nacht",sun:"Sonne",moon:"Mond",love:"Liebe",
+    happy:"glücklich",sad:"traurig",big:"groß",small:"klein",fast:"schnell",
+    slow:"langsam",red:"rot",blue:"blau",green:"grün",school:"Schule",
+    teacher:"Lehrer",student:"Schüler",book:"Buch",table:"Tisch",chair:"Stuhl"
+  };
+  const key=word.toLowerCase().trim();
+  if(dictionary[key])return dictionary[key];
 
   try{
-
-    const url =
-      "https://api.mymemory.translated.net/get?q="+
-      encodeURIComponent(word)+
-      "&langpair=en|de";
-
-
-    const response =
-      await fetch(url);
-
-
-    if(!response.ok){
-      throw new Error(
-        "Translation failed"
-      );
-    }
-
-
-    const json =
-      await response.json();
-
-
-    const result =
-      json?.responseData?.translatedText;
-
-
-    if(result){
-      return result;
-    }
-
-
-  }catch(error){
-
-    console.warn(
-      "Übersetzung nicht verfügbar:",
-      error
-    );
-
-  }
-
-
-  return "Bitte Übersetzung ergänzen";
-
+    const url="https://api.mymemory.translated.net/get?q="+encodeURIComponent(word)+"&langpair=en|de";
+    const r=await fetch(url);
+    const d=await r.json();
+    const t=d?.responseData?.translatedText;
+    if(t && t.toLowerCase()!==word.toLowerCase())return t;
+  }catch(e){}
+  return "Bitte Übersetzung bearbeiten";
 }
 
+async function importWords(){
+  const text=$("importText").value.trim();
+  if(!text)return toast("Bitte Wörter eingeben.");
 
-/* =========================================================
-   WORD LIST
-========================================================= */
-
-function renderWordList(){
-
-  const container =
-    document.getElementById(
-      "wordList"
-    );
-
-
-  if(!container){
-    return;
+  const lines=text.split(/\n/).map(x=>x.trim()).filter(Boolean);
+  const parsed=[];
+  for(const line of lines){
+    let parts=line.split(/\s*(?:=|;|\t)\s*/);
+    parsed.push({en:parts[0].trim(),de:parts[1]?.trim()||""});
   }
 
+  const existing=new Set(user().words.map(w=>w.en.toLowerCase()));
+  const fresh=parsed.filter(x=>x.en&&!existing.has(x.en.toLowerCase()));
 
-  if(!data.words.length){
+  if(!fresh.length)return toast("Diese Wörter sind bereits vorhanden.");
+  const cost=fresh.length*settings.wordImportCost;
+  if(user().coins<cost)return toast("Nicht genug Coins.");
 
-    container.innerHTML = `
-
-      <div
-        style="
-          color:var(--muted);
-          padding:15px
-        "
-      >
-        Noch keine Wörter vorhanden.
-      </div>
-
-    `;
-
-    return;
+  toast("🌍 Übersetzungen werden gesucht...");
+  for(const item of fresh){
+    if(!item.de)item.de=await translateWord(item.en);
   }
 
-
-  container.innerHTML =
-    data.words
-      .map(
-        (word,index)=>`
-
-          <div
-            class="word-row"
-            id="word-row-${index}"
-          >
-
-            <div class="word-left">
-
-              <strong>
-                ${escapeHTML(
-                  word.english
-                )}
-              </strong>
-
-              <span>
-                ${escapeHTML(
-                  word.german
-                )}
-              </span>
-
-            </div>
-
-
-            <div class="word-actions">
-
-              <button
-                class="success-btn"
-                onclick="editWord(${index})"
-              >
-                ✏️ Bearbeiten
-              </button>
-
-              <button
-                class="danger-btn"
-                onclick="deleteWord(${index})"
-              >
-                🗑️ Löschen
-              </button>
-
-            </div>
-
-          </div>
-
-        `
-      )
-      .join("");
-
+  user().coins-=cost;
+  fresh.forEach(x=>user().words.push({
+    id:uid(),en:x.en,de:x.de,createdAt:new Date().toISOString()
+  }));
+  saveUser();
+  $("importText").value="";
+  toast(`✅ ${fresh.length} Wörter importiert!`);
+  render();
 }
 
-
-/* =========================================================
-   EDIT WORD
-========================================================= */
-
-function editWord(index){
-
-  const word =
-    data.words[index];
-
-
-  if(!word){
-    return;
-  }
-
-
-  const row =
-    document.getElementById(
-      `word-row-${index}`
-    );
-
-
-  row.innerHTML = `
-
-    <div style="width:100%">
-
-      <strong style="font-size:17px">
-        ✏️ Wort bearbeiten
-      </strong>
-
-
-      <div
-        class="edit-box"
-      >
-
-        <div class="edit-grid">
-
-          <div>
-
-            <label
-              style="
-                display:block;
-                font-size:12px;
-                font-weight:800;
-                margin-bottom:5px
-              "
-            >
-              Fremdsprache
-            </label>
-
-            <input
-              id="editEnglish-${index}"
-              value="${escapeAttribute(
-                word.english
-              )}"
-            >
-
-          </div>
-
-
-          <div>
-
-            <label
-              style="
-                display:block;
-                font-size:12px;
-                font-weight:800;
-                margin-bottom:5px
-              "
-            >
-              Übersetzung
-            </label>
-
-            <input
-              id="editGerman-${index}"
-              value="${escapeAttribute(
-                word.german
-              )}"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="edit-actions">
-
-          <button
-            class="success-btn"
-            onclick="saveEditedWord(${index})"
-          >
-            ✓ Speichern
-          </button>
-
-          <button
-            class="secondary-btn"
-            onclick="cancelEditWord()"
-          >
-            Abbrechen
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
+function saveWord(id){
+  const w=user().words.find(x=>x.id===id);
+  if(!w)return;
+  const en=$("en_"+id).value.trim();
+  const de=$("de_"+id).value.trim();
+  if(!en||!de)return toast("Beide Felder ausfüllen.");
+  w.en=en;w.de=de;saveUser();toast("✅ Wort gespeichert.");
+}
+function deleteWord(id){
+  if(!confirm("Dieses Wort wirklich löschen?"))return;
+  user().words=user().words.filter(w=>w.id!==id);
+  saveUser();render();toast("Wort gelöscht.");
 }
 
-
-function saveEditedWord(index){
-
-  const english =
-    document
-      .getElementById(
-        `editEnglish-${index}`
-      )
-      .value
-      .trim();
-
-
-  const german =
-    document
-      .getElementById(
-        `editGerman-${index}`
-      )
-      .value
-      .trim();
-
-
-  if(!english){
-
-    toast(
-      "Das Wort darf nicht leer sein."
-    );
-
-    return;
-  }
-
-
-  if(!german){
-
-    toast(
-      "Die Übersetzung darf nicht leer sein."
-    );
-
-    return;
-  }
-
-
-  /*
-    Prüfen, ob das neue Wort bereits
-    bei einem anderen Eintrag existiert.
-  */
-
-  const duplicate =
-    data.words.some(
-      (word,i) =>
-        i !== index &&
-        word.english.toLowerCase() ===
-        english.toLowerCase()
-    );
-
-
-  if(duplicate){
-
-    toast(
-      "Dieses Wort existiert bereits."
-    );
-
-    return;
-  }
-
-
-  data.words[index].english =
-    english;
-
-  data.words[index].german =
-    german;
-
-
-  saveCurrentUser();
-
-  renderWordList();
-
-  updateUI();
-
-  toast(
-    "Wort erfolgreich geändert! ✨"
-  );
-
+function finishLearning(){
+  if(!learning)return;
+  markStudy();
+  user().coins+=settings.learnReward;
+  user().stats.sessions++;
+  saveUser();
+  toast(`🎉 Runde geschafft! +${money(settings.learnReward)} Coins`);
+  learning=null;
+  renderLearn();
+  renderHome();
 }
-
-
-function cancelEditWord(){
-
-  renderWordList();
-
-}
-
-
-/* =========================================================
-   DELETE WORD
-========================================================= */
-
-function deleteWord(index){
-
-  const word =
-    data.words[index];
-
-
-  if(!word){
+function renderLearn(){
+  const el=$("learn");
+  const u=user();
+  if(u.words.length<1){
+    el.innerHTML=`<h1>🧠 Lernen</h1><div class="card"><h2>Du brauchst zuerst Wörter.</h2><button class="btn" onclick="showScreen('words')">📚 Wörter importieren</button></div>`;
+    return;
+  }
+  if(!learning){
+    el.innerHTML=`
+      <h1>🧠 Lernen</h1>
+      <div class="learning-card">
+        <h2>5-Wörter-Lernrunde</h2>
+        <p>Die Runde kostet 0 Coins.</p>
+        <h2>🎁 +${money(settings.learnReward)} Coins</h2>
+        <button class="btn" onclick="startLearning()">Runde starten</button>
+      </div>`;
     return;
   }
 
-
-  if(
-    !confirm(
-      `„${word.english}“ wirklich löschen?`
-    )
-  ){
-
-    return;
-
-  }
-
-
-  data.words.splice(index,1);
-
-
-  saveCurrentUser();
-
-  updateUI();
-
-
-  toast(
-    "Wort gelöscht."
-  );
-
+  const w=learning.current;
+  el.innerHTML=`
+    <h1>🧠 Lernen</h1>
+    <div class="learning-card">
+      <span class="badge">${learning.index+1} / 5</span>
+      <div class="big-word">${esc(w.en)}</div>
+      <div class="answer">${learning.revealed?esc(w.de):"?"}</div>
+      ${!learning.revealed?
+        `<button class="btn" onclick="learning.revealed=true;renderLearn()">Übersetzung zeigen</button>`:
+        `<div class="choices">
+          <button class="btn green" onclick="learningAnswer(true)">✅ Gewusst</button>
+          <button class="btn red" onclick="learningAnswer(false)">🔁 Nochmal</button>
+        </div>`
+      }
+    </div>`;
 }
-
-
-/* =========================================================
-   LEARNING
-========================================================= */
-
 function startLearning(){
-
-  if(!data.words.length){
-
-    toast(
-      "Importiere zuerst Wörter."
-    );
-
-    showScreen("words");
-
-    return;
-  }
-
-
-  learningIndex =
-    Math.floor(
-      Math.random() *
-      data.words.length
-    );
-
-
-  renderLearning();
-
+  const pool=shuffle(user().words);
+  learning={list:pool.slice(0,Math.min(5,pool.length)),index:0,revealed:false,current:null};
+  learning.current=learning.list[0];
+  renderLearn();
+}
+function learningAnswer(correct){
+  user().stats.answers++;
+  if(correct){user().stats.correct++;addXP(20)}
+  learning.index++;
+  if(learning.index>=learning.list.length)return finishLearning();
+  learning.current=learning.list[learning.index];
+  learning.revealed=false;
+  saveUser();renderLearn();
 }
 
-
-function renderLearning(){
-
-  if(
-    !data ||
-    !document.getElementById(
-      "learnWord"
-    )
-  ){
-
+function renderCards(){
+  const el=$("cards");
+  if(!user().words.length){
+    el.innerHTML=`<h1>🃏 Karteikarten</h1><div class="card">Importiere zuerst Wörter.</div>`;
     return;
-
   }
-
-
-  if(!data.words.length){
-
-    document.getElementById(
-      "learnWord"
-    ).textContent =
-      "Noch keine Wörter";
-
-
-    document.getElementById(
-      "learnTranslation"
-    ).textContent =
-      "Importiere zuerst einige Wörter.";
-
-
-    document.getElementById(
-      "learnIndex"
-    ).textContent =
-      "0";
-
-
-    document.getElementById(
-      "learnTotal"
-    ).textContent =
-      "0";
-
-
-    return;
-
-  }
-
-
-  const word =
-    data.words[
-      learningIndex %
-      data.words.length
-    ];
-
-
-  document.getElementById(
-    "learnWord"
-  ).textContent =
-    word.english;
-
-
-  document.getElementById(
-    "learnTranslation"
-  ).textContent =
-    word.german;
-
-
-  document.getElementById(
-    "learnIndex"
-  ).textContent =
-    (
-      learningIndex %
-      data.words.length
-    ) + 1;
-
-
-  document.getElementById(
-    "learnTotal"
-  ).textContent =
-    data.words.length;
-
+  el.innerHTML=`
+    <h1>🃏 Karteikarten</h1>
+    <div class="learning-card" id="flashcard">
+      <div class="big-word" id="cardWord">${esc(window.cardWord?.en||user().words[0].en)}</div>
+      <div class="answer" id="cardAnswer"></div>
+      <button class="btn" onclick="flipCard()">Umdrehen</button>
+      <button class="btn secondary" onclick="nextCard()">Nächste Karte</button>
+    </div>`;
 }
-
-
-function finishLearning(known){
-
-  if(!data.words.length){
-
-    toast(
-      "Keine Wörter vorhanden."
-    );
-
-    return;
-  }
-
-
-  const word =
-    data.words[
-      learningIndex %
-      data.words.length
-    ];
-
-
-  if(known){
-
-    if(
-      !data.known.includes(
-        word.id
-      )
-    ){
-
-      data.known.push(
-        word.id
-      );
-
-    }
-
-    data.xp += 100;
-
-  }else{
-
-    data.xp += 25;
-
-  }
-
-
-  /*
-    Lernen kostet nichts.
-    Jede abgeschlossene Lerneinheit
-    gibt 1.000.000 virtuelle Coins.
-  */
-
-  data.coins += 1000000;
-
-  data.learningSessions++;
-
-
-  markStudyDay();
-
-  saveCurrentUser();
-
-
-  learningIndex =
-    (
-      learningIndex + 1
-    ) %
-    data.words.length;
-
-
-  renderLearning();
-
-  updateUI();
-
-
-  toast(
-    "🎉 Lerneinheit abgeschlossen! +1.000.000 Coins"
-  );
-
-}
-
-
-/* =========================================================
-   FLASHCARDS
-========================================================= */
-
-function renderFlashcard(){
-
-  if(
-    !data ||
-    !document.getElementById(
-      "flashMain"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  if(!data.words.length){
-
-    document.getElementById(
-      "flashMain"
-    ).textContent =
-      "Keine Wörter";
-
-
-    document.getElementById(
-      "flashHint"
-    ).textContent =
-      "Importiere zuerst Wörter.";
-
-    return;
-
-  }
-
-
-  const word =
-    data.words[
-      cardIndex %
-      data.words.length
-    ];
-
-
-  if(cardFlipped){
-
-    document.getElementById(
-      "flashMain"
-    ).textContent =
-      word.german;
-
-
-    document.getElementById(
-      "flashHint"
-    ).textContent =
-      "Klicke zum Zurückdrehen";
-
-  }else{
-
-    document.getElementById(
-      "flashMain"
-    ).textContent =
-      word.english;
-
-
-    document.getElementById(
-      "flashHint"
-    ).textContent =
-      "Klicke für die Übersetzung";
-
-  }
-
-}
-
-
+window.cardWord=window.cardWord||null;
 function flipCard(){
-
-  if(!data.words.length){
-    return;
-  }
-
-  cardFlipped =
-    !cardFlipped;
-
-  renderFlashcard();
-
+  const w=window.cardWord||user().words[0];
+  $("cardAnswer").textContent=w.de;
 }
-
-
 function nextCard(){
-
-  if(!data.words.length){
-    return;
-  }
-
-  cardIndex =
-    (
-      cardIndex + 1
-    ) %
-    data.words.length;
-
-  cardFlipped = false;
-
-  renderFlashcard();
-
+  window.cardWord=randomWord();renderCards();
 }
-
-
-function previousCard(){
-
-  if(!data.words.length){
-    return;
-  }
-
-  cardIndex--;
-
-  if(cardIndex < 0){
-
-    cardIndex =
-      data.words.length - 1;
-
-  }
-
-  cardFlipped = false;
-
-  renderFlashcard();
-
-}
-
-
-/* =========================================================
-   QUIZ
-========================================================= */
 
 function newQuiz(){
-
-  if(
-    !data ||
-    data.words.length < 2
-  ){
-
-    document.getElementById(
-      "quizQuestion"
-    ).textContent =
-      "Mindestens 2 Wörter nötig";
-
-
-    document.getElementById(
-      "quizOptions"
-    ).innerHTML = "";
-
-
-    return;
-
-  }
-
-
-  quizAnswered = false;
-
-
-  quizWord =
-    data.words[
-      Math.floor(
-        Math.random() *
-        data.words.length
-      )
-    ];
-
-
-  const others =
-    data.words
-      .filter(
-        w =>
-          w.id !==
-          quizWord.id
-      )
-      .sort(
-        ()=>Math.random()-.5
-      )
-      .slice(0,3);
-
-
-  const options =
-    [...others,quizWord]
-      .sort(
-        ()=>Math.random()-.5
-      );
-
-
-  document.getElementById(
-    "quizQuestion"
-  ).textContent =
-    `Was bedeutet „${quizWord.english}“?`;
-
-
-  document.getElementById(
-    "quizResult"
-  ).textContent = "";
-
-
-  document.getElementById(
-    "quizOptions"
-  ).innerHTML =
-    options
-      .map(
-        option=>`
-
-          <button
-            class="quiz-option"
-            onclick="answerQuiz(
-              '${encodeURIComponent(
-                option.german
-              )}'
-            )"
-          >
-            ${escapeHTML(
-              option.german
-            )}
-          </button>
-
-        `
-      )
-      .join("");
-
+  const words=user().words;
+  if(words.length<2)return;
+  const q=randomWord();
+  const wrong=shuffle(words.filter(w=>w.id!==q.id)).slice(0,3).map(w=>w.de);
+  quizState={q,answers:shuffle([q.de,...wrong])};
 }
-
-
-function answerQuiz(encoded){
-
-  if(quizAnswered){
+function renderQuiz(){
+  const el=$("quiz");
+  if(user().words.length<2){
+    el.innerHTML=`<h1>❓ Quiz</h1><div class="card">Du brauchst mindestens 2 Wörter.</div>`;
     return;
   }
-
-
-  quizAnswered = true;
-
-
-  const answer =
-    decodeURIComponent(encoded);
-
-
-  const result =
-    document.getElementById(
-      "quizResult"
-    );
-
-
-  if(
-    answer.toLowerCase() ===
-    quizWord.german.toLowerCase()
-  ){
-
-    result.textContent =
-      "🎉 Richtig!";
-
-    result.style.color =
-      "#16845e";
-
-
-    data.quizCorrect++;
-
-    data.xp += 150;
-
-
-    const reward =
-      Number(
-        settings.quizReward
-      ) || 0;
-
-
-    if(reward > 0){
-
-      data.coins += reward;
-
-    }
-
-
-    markStudyDay();
-
-    saveCurrentUser();
-
-  }else{
-
-    result.textContent =
-      `❌ Nicht ganz. Richtig wäre: ${quizWord.german}`;
-
-    result.style.color =
-      "#d65454";
-
-  }
-
-
-  updateUI();
-
+  if(!quizState)newQuiz();
+  el.innerHTML=`
+    <h1>❓ Übersetzungs-Quiz</h1>
+    <div class="learning-card">
+      <p>Was bedeutet:</p>
+      <div class="big-word">${esc(quizState.q.en)}</div>
+      <div class="choices">
+        ${quizState.answers.map(a=>`<button class="choice" onclick="answerQuiz('${esc(a).replace(/'/g,"&#39;")}')">${esc(a)}</button>`).join("")}
+      </div>
+    </div>`;
+}
+function answerQuiz(answer){
+  const correct=answer===quizState.q.de;
+  if(correct){addXP(50);user().stats.correct++;toast("✅ Richtig! +50 XP");}
+  else toast("❌ Nicht ganz.");
+  user().stats.answers++;saveUser();quizState=null;renderQuiz();
 }
 
-
-/* =========================================================
-   WRITE
-========================================================= */
-
-function newWriteWord(){
-
-  if(
-    !data ||
-    !data.words.length
-  ){
-
-    document.getElementById(
-      "writeWord"
-    ).textContent =
-      "Keine Wörter";
-
+function renderWrite(){
+  const el=$("write");
+  if(!user().words.length){
+    el.innerHTML=`<h1>✍️ Schreiben</h1><div class="card">Importiere zuerst Wörter.</div>`;
     return;
-
   }
-
-
-  writeWord =
-    data.words[
-      Math.floor(
-        Math.random() *
-        data.words.length
-      )
-    ];
-
-
-  document.getElementById(
-    "writeWord"
-  ).textContent =
-    writeWord.english;
-
-
-  document.getElementById(
-    "writeAnswer"
-  ).value = "";
-
-
-  document.getElementById(
-    "writeResult"
-  ).textContent = "";
-
+  if(!writeState)writeState={w:randomWord(),done:false};
+  el.innerHTML=`
+    <h1>✍️ Schreiben</h1>
+    <div class="learning-card">
+      <p>Übersetze ins Deutsche:</p>
+      <div class="big-word">${esc(writeState.w.en)}</div>
+      <input id="writeAnswer" placeholder="Deine Übersetzung">
+      <br><br>
+      <button class="btn" onclick="checkWrite()">Prüfen</button>
+      ${writeState.done?`<p><b>Lösung:</b> ${esc(writeState.w.de)}</p><button class="btn secondary" onclick="writeState=null;renderWrite()">Nächstes Wort</button>`:""}
+    </div>`;
 }
-
-
 function checkWrite(){
-
-  if(!writeWord){
-    return;
-  }
-
-
-  const answer =
-    document
-      .getElementById(
-        "writeAnswer"
-      )
-      .value
-      .trim();
-
-
-  const result =
-    document.getElementById(
-      "writeResult"
-    );
-
-
-  if(!answer){
-
-    result.textContent =
-      "Bitte schreibe eine Antwort.";
-
-    result.style.color =
-      "#d65454";
-
-    return;
-
-  }
-
-
-  if(
-    answer.toLowerCase() ===
-    writeWord.german.toLowerCase()
-  ){
-
-    result.textContent =
-      "🎉 Richtig!";
-
-    result.style.color =
-      "#16845e";
-
-
-    data.xp += 150;
-
-    markStudyDay();
-
-    saveCurrentUser();
-
-    toast(
-      "Gut gemacht! ⭐"
-    );
-
-  }else{
-
-    result.textContent =
-      `❌ Richtig wäre: ${writeWord.german}`;
-
-    result.style.color =
-      "#d65454";
-
-  }
-
-
-  updateUI();
-
+  const a=$("writeAnswer").value.trim().toLowerCase();
+  const correct=a===writeState.w.de.trim().toLowerCase();
+  user().stats.answers++;
+  if(correct){addXP(75);user().stats.correct++;toast("🎉 Richtig! +75 XP")}
+  else toast("Noch nicht ganz.");
+  writeState.done=true;saveUser();renderWrite();
 }
 
-
-/* =========================================================
-   MINI GAMES
-========================================================= */
-
-function playGame(name,cost){
-
-  if(!removeCoins(cost)){
-    return;
-  }
-
-
-  data.gamesPlayed++;
-
-  saveCurrentUser();
-
-
-  toast(
-    `🎮 ${name} gestartet! Viel Spaß!`
-  );
-
-}
-
-
-/* =========================================================
-   SHOP
-========================================================= */
-
-const shopItems = [
-
-  {
-    icon:"🪙",
-    amount:1000000,
-    name:"1 Million Coins",
-    description:"Virtuelles Coin-Paket.",
-    price:1000000,
-    badge:"START"
-  },
-
-  {
-    icon:"💰",
-    amount:5000000,
-    name:"5 Millionen Coins",
-    description:"Mehr virtuelle Coins.",
-    price:5000000,
-    badge:""
-  },
-
-  {
-    icon:"💎",
-    amount:10000000,
-    name:"10 Millionen Coins",
-    description:"Großes virtuelles Paket.",
-    price:10000000,
-    badge:"BELIEBT"
-  },
-
-  {
-    icon:"💎",
-    amount:25000000,
-    name:"25 Millionen Coins",
-    description:"Für größere Extras.",
-    price:25000000,
-    badge:""
-  },
-
-  {
-    icon:"👑",
-    amount:50000000,
-    name:"50 Millionen Coins",
-    description:"Riesiges Coin-Paket.",
-    price:50000000,
-    badge:""
-  },
-
-  {
-    icon:"👑",
-    amount:100000000,
-    name:"100 Millionen Coins",
-    description:"Sehr großes Paket.",
-    price:100000000,
-    badge:"MEGA"
-  },
-
-  {
-    icon:"🚀",
-    amount:250000000,
-    name:"250 Millionen Coins",
-    description:"Gigantisches Paket.",
-    price:250000000,
-    badge:""
-  },
-
-  {
-    icon:"🌟",
-    amount:500000000,
-    name:"500 Millionen Coins",
-    description:"Sehr großes virtuelles Paket.",
-    price:500000000,
-    badge:""
-  },
-
-  {
-    icon:"🏆",
-    amount:1000000000,
-    name:"1 Milliarde Coins",
-    description:"Das große Mega-Paket.",
-    price:1000000000,
-    badge:"ULTRA"
-  }
-
+const offers=[
+  {id:"o1",name:"+1.000.000 Coin-Bonus",amount:1000000},
+  {id:"o2",name:"+5.000.000 Coin-Bonus",amount:5000000},
+  {id:"o3",name:"+10.000.000 Coin-Bonus",amount:10000000},
+  {id:"o4",name:"+25.000.000 Coin-Bonus",amount:25000000},
+  {id:"o5",name:"+50.000.000 Coin-Bonus",amount:50000000},
+  {id:"o6",name:"+100.000.000 Coin-Bonus",amount:100000000}
 ];
 
-
 function renderShop(){
-
-  const grid =
-    document.getElementById(
-      "shopGrid"
-    );
-
-
-  if(!grid){
-    return;
-  }
-
-
-  const cards =
-    shopItems
-      .map(
-        (item,index)=>`
-
-          <div
-            class="card shop-card"
-          >
-
-            ${
-              item.badge
-              ?
-              `<div class="shop-badge">
-                ${item.badge}
-              </div>`
-              :
-              ""
-            }
-
-
-            <div class="shop-icon">
-              ${item.icon}
-            </div>
-
-
-            <div class="shop-amount">
-              ${item.name}
-            </div>
-
-
-            <div class="shop-description">
-              ${item.description}
-            </div>
-
-
-            <div class="shop-price">
-              Preis:
-              ${formatNumber(item.price)}
-              🪙
-            </div>
-
-
-            <button
-              class="primary-btn"
-              onclick="buyCoinPackage(${index})"
-            >
-              Kaufen
-            </button>
-
-          </div>
-
-        `
-      )
-      .join("");
-
-
-  const freezeCard = `
-
-    <div
-      class="card shop-card freeze-card"
-    >
-
-      <div class="shop-badge">
-        STREAK
+  const u=user();
+  $("shop").innerHTML=`
+    <h1>🛍️ Shop</h1>
+    <p>Alle Angebote sind rein virtuell und verwenden keine echten Zahlungen.</p>
+    <div class="card">
+      <div class="offer">
+        <div><h2>🧊 Streak auf Eis</h2><p>Schützt eine verpasste Lernnacht.</p></div>
+        <button class="btn blue" onclick="buyFreeze()">90.000.000 Coins</button>
       </div>
-
-
-      <div class="shop-icon">
-        🧊
-      </div>
-
-
-      <div class="shop-amount">
-        Streak auf Eis
-      </div>
-
-
-      <div class="shop-description">
-        Schützt deinen Streak vor einem
-        verpassten Lerntag.
-      </div>
-
-
-      <div class="shop-price">
-        Preis:
-        ${formatNumber(
-          settings.freezeCost
-        )}
-        🪙
-      </div>
-
-
-      <button
-        class="primary-btn"
-        onclick="buyFreeze()"
-      >
-        Eis kaufen
-      </button>
-
+      <p>Du besitzt: 🧊 <b>${u.streakFreezes}</b></p>
     </div>
-
-  `;
-
-
-  grid.innerHTML =
-    cards + freezeCard;
-
+    <br>
+    <div class="grid2">
+      ${offers.map(o=>{
+        const claimed=u.claimedOffers.includes(o.id);
+        return `<div class="card">
+          <h2>🪙 ${money(o.amount)}</h2>
+          <p>${o.name}</p>
+          <button class="btn" ${claimed?"disabled":""} onclick="claimOffer('${o.id}')">
+            ${claimed?"Bereits eingelöst":"Bonus einlösen"}
+          </button>
+        </div>`;
+      }).join("")}
+    </div>
+    <br>
+    <div class="card">
+      <h2>🎟️ Coin-Code</h2>
+      <p>Hast du einen Code vom Admin?</p>
+      <input id="codeInput" placeholder="CODE-123">
+      <br><br><button class="btn" onclick="redeemCode()">Code einlösen</button>
+    </div>`;
 }
-
-
-function buyCoinPackage(index){
-
-  const item =
-    shopItems[index];
-
-
-  /*
-    Diese Demo enthält nur virtuelle Coins.
-    Das Paket wird deshalb als virtuelles
-    Shop-Angebot behandelt.
-  */
-
-  if(!removeCoins(item.price)){
-    return;
-  }
-
-
-  addCoins(item.amount);
-
-
-  toast(
-    `🎉 ${formatNumber(item.amount)} Coins erhalten!`
-  );
-
-}
-
-
 function buyFreeze(){
-
-  const cost =
-    Number(
-      settings.freezeCost
-    ) || 90000000;
-
-
-  if(!removeCoins(cost)){
-    return;
-  }
-
-
-  data.freezeCount++;
-
-  saveCurrentUser();
-
-  updateUI();
-
-
-  toast(
-    "🧊 Streak-Eis gekauft!"
-  );
-
+  if(user().coins<settings.streakFreezeCost)return toast("Nicht genug Coins.");
+  user().coins-=settings.streakFreezeCost;
+  user().streakFreezes++;
+  saveUser();toast("🧊 Streak-Eis gekauft!");
+  render();
 }
-
-
-/* =========================================================
-   REDEEM CODES
-========================================================= */
-
+function claimOffer(id){
+  const o=offers.find(x=>x.id===id);
+  if(!o||user().claimedOffers.includes(id))return;
+  user().claimedOffers.push(id);
+  user().coins+=o.amount;
+  saveUser();toast(`🎁 +${money(o.amount)} Coins!`);render();
+}
 function redeemCode(){
-
-  if(!data){
-    return;
-  }
-
-
-  const input =
-    document.getElementById(
-      "redeemCode"
-    );
-
-
-  const code =
-    input.value
-      .trim()
-      .toUpperCase();
-
-
-  if(!code){
-
-    toast(
-      "Bitte gib einen Code ein."
-    );
-
-    return;
-
-  }
-
-
-  const codes =
-    loadCodes();
-
-
-  const item =
-    codes.find(
-      c =>
-        c.code === code
-    );
-
-
-  if(!item){
-
-    toast(
-      "Code nicht gefunden."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    data.usedCodes.includes(code)
-  ){
-
-    toast(
-      "Du hast diesen Code bereits benutzt."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    item.uses >=
-    item.maxUses
-  ){
-
-    toast(
-      "Dieser Code wurde bereits zu oft eingelöst."
-    );
-
-    return;
-
-  }
-
-
-  data.coins +=
-    Number(item.coins);
-
-
-  data.usedCodes.push(
-    code
-  );
-
-
-  item.uses++;
-
-
-  saveCodes(codes);
-
-  saveCurrentUser();
-
-  input.value = "";
-
-  updateUI();
-
-
-  toast(
-    `🎉 ${formatNumber(
-      item.coins
-    )} Coins erhalten!`
-  );
-
+  const code=$("codeInput").value.trim().toUpperCase();
+  const codes=JSON.parse(localStorage.getItem(CODES_KEY)||"[]");
+  const c=codes.find(x=>x.code===code);
+  if(!c)return toast("Code nicht gefunden.");
+  if(user().usedCodes.includes(code))return toast("Du hast diesen Code schon verwendet.");
+  if(c.uses>=c.maxUses)return toast("Dieser Code ist aufgebraucht.");
+  c.uses++;
+  user().usedCodes.push(code);
+  user().coins+=c.coins;
+  localStorage.setItem(CODES_KEY,JSON.stringify(codes));
+  saveUser();toast(`🎉 +${money(c.coins)} Coins erhalten!`);render();
 }
 
+function renderCollection(){
+  const u=user();
+  const badges=[];
+  if(u.words.length>=1)badges.push("📚 Erste Wörter");
+  if(u.words.length>=10)badges.push("📖 Wort-Sammler");
+  if(u.streak>=3)badges.push("🔥 3-Tage-Streak");
+  if(u.streak>=7)badges.push("🔥 Wochen-Streak");
+  if(u.xp>=1000)badges.push("⭐ 1.000 XP");
+  if(u.stats.correct>=50)badges.push("🏆 50 richtige Antworten");
+  $("collection").innerHTML=`
+    <h1>🏆 Sammlung</h1>
+    <div class="grid">
+      <div class="card"><small>Wörter</small><div class="stat">${u.words.length}</div></div>
+      <div class="card"><small>Beste Streak</small><div class="stat">${u.bestStreak}</div></div>
+      <div class="card"><small>XP</small><div class="stat">${money(u.xp)}</div></div>
+      <div class="card"><small>Richtig</small><div class="stat">${u.stats.correct}</div></div>
+    </div>
+    <br><div class="card"><h2>Deine Abzeichen</h2>
+    ${badges.length?badges.map(x=>`<span class="badge" style="margin:5px">${x}</span>`).join(""):"<p>Weiter lernen, um Abzeichen freizuschalten.</p>"}</div>`;
+}
 
-/* =========================================================
+/* =========================
+   MINI-GAMES
+========================= */
+
+const games=[
+  {id:"blitz",name:"⚡ Word Blitz",cost:50000,desc:"So viele Übersetzungen wie möglich in 30 Sekunden."},
+  {id:"speed",name:"🚀 Speed Translation",cost:75000,desc:"10 Wörter so schnell wie möglich."},
+  {id:"memory",name:"🧠 Memory",cost:100000,desc:"Finde passende Wortpaare."},
+  {id:"spelling",name:"✍️ Spell Rush",cost:125000,desc:"Schreibe die Übersetzungen richtig."},
+  {id:"reaction",name:"🦊 Reaction Fox",cost:150000,desc:"Klicke den Fuchs so schnell wie möglich."},
+  {id:"catch",name:"🪙 Coin Catch",cost:200000,desc:"Fange die Sterne innerhalb des Zeitlimits."}
+];
+
+function renderGames(){
+  $("minigames").innerHTML=`
+    <h1>🎮 Mini-Games</h1>
+    <p>Die Spiele kosten virtuelle Coins. Je höher der Preis, desto größer die Herausforderung.</p>
+    <div class="grid2">
+      ${games.map(g=>`
+        <div class="card">
+          <h2>${g.name}</h2>
+          <p>${g.desc}</p>
+          <span class="badge">🪙 ${money(g.cost)} Einsatz</span>
+          <br><br>
+          <button class="btn" onclick="startGame('${g.id}')">Spielen</button>
+        </div>`).join("")}
+    </div>
+    <br><div class="card" id="gameArea">
+      <h2>Wähle ein Spiel</h2>
+      <p>Die Spiele werden direkt hier gestartet.</p>
+    </div>`;
+}
+
+function payGame(id){
+  const g=games.find(x=>x.id===id);
+  if(user().coins<g.cost){toast("Nicht genug Coins für dieses Spiel.");return false}
+  user().coins-=g.cost;saveUser();return true;
+}
+
+function startGame(id){
+  if(!payGame(id))return;
+  if(id==="blitz")startBlitz();
+  if(id==="speed")startSpeed();
+  if(id==="memory")startMemory();
+  if(id==="spelling")startSpelling();
+  if(id==="reaction")startReaction();
+  if(id==="catch")startCatch();
+  render();
+}
+
+function needWords(){
+  if(user().words.length<2){
+    toast("Du brauchst mindestens 2 Wörter.");
+    return false;
+  }
+  return true;
+}
+
+/* Word Blitz */
+function startBlitz(){
+  if(!needWords())return;
+  blitzState={time:30,score:0,w:randomWord()};
+  showGame(`<div class="game">
+    <h2>⚡ Word Blitz</h2>
+    <div class="timer" id="gameTimer">30</div>
+    <p>Was bedeutet: <b id="blitzWord">${esc(blitzState.w.en)}</b>?</p>
+    <input id="blitzInput" placeholder="Übersetzung" onkeydown="if(event.key==='Enter')answerBlitz()">
+    <br><button class="btn" onclick="answerBlitz()">Antwort</button>
+    <p>Punkte: <b id="blitzScore">0</b></p>
+  </div>`);
+  blitzState.interval=setInterval(()=>{
+    blitzState.time--;
+    if($("gameTimer"))$("gameTimer").textContent=blitzState.time;
+    if(blitzState.time<=0)endBlitz();
+  },1000);
+}
+function answerBlitz(){
+  if(!blitzState)return;
+  const val=$("blitzInput").value.trim().toLowerCase();
+  if(val===blitzState.w.de.toLowerCase()){
+    blitzState.score++;addXP(10);
+  }
+  blitzState.w=randomWord();
+  $("blitzWord").textContent=blitzState.w.en;
+  $("blitzInput").value="";
+  $("blitzScore").textContent=blitzState.score;
+}
+function endBlitz(){
+  if(!blitzState)return;
+  clearInterval(blitzState.interval);
+  const reward=blitzState.score*25000;
+  user().coins+=reward;saveUser();
+  toast(`⚡ Spiel vorbei! +${money(reward)} Coins`);
+  blitzState=null;renderGames();render();
+}
+
+/* Speed Translation */
+function startSpeed(){
+  if(!needWords())return;
+  blitzState={time:45,score:0,round:0,w:randomWord()};
+  showGame(`<div class="game">
+    <h2>🚀 Speed Translation</h2>
+    <div class="timer" id="gameTimer">45</div>
+    <p><b id="speedWord">${esc(blitzState.w.en)}</b></p>
+    <div class="choices" id="speedChoices"></div>
+    <p>Richtig: <b id="speedScore">0</b> / 10</p>
+  </div>`);
+  speedChoices();
+  blitzState.interval=setInterval(()=>{
+    blitzState.time--;
+    if($("gameTimer"))$("gameTimer").textContent=blitzState.time;
+    if(blitzState.time<=0)endSpeed();
+  },1000);
+}
+function speedChoices(){
+  const w=blitzState.w;
+  const answers=shuffle([w.de,...shuffle(user().words.filter(x=>x.id!==w.id)).slice(0,3).map(x=>x.de)]);
+  $("speedChoices").innerHTML=answers.map(a=>`<button class="choice" onclick="speedAnswer('${esc(a).replace(/'/g,"&#39;")}')">${esc(a)}</button>`).join("");
+}
+function speedAnswer(a){
+  if(!blitzState)return;
+  if(a===blitzState.w.de){blitzState.score++;addXP(15)}
+  blitzState.round++;
+  if(blitzState.round>=10)return endSpeed();
+  blitzState.w=randomWord();
+  $("speedWord").textContent=blitzState.w.en;
+  $("speedScore").textContent=blitzState.score;
+  speedChoices();
+}
+function endSpeed(){
+  if(!blitzState)return;
+  clearInterval(blitzState.interval);
+  const reward=blitzState.score*30000;
+  user().coins+=reward;saveUser();
+  toast(`🚀 Runde beendet! +${money(reward)} Coins`);
+  blitzState=null;renderGames();render();
+}
+
+/* Memory */
+function startMemory(){
+  if(user().words.length<4)return toast("Für Memory brauchst du mindestens 4 Wörter.");
+  const pairs=shuffle(user().words).slice(0,4);
+  memoryState={cards:shuffle(pairs.flatMap(w=>[
+    {id:w.id,type:"en",text:w.en},
+    {id:w.id,type:"de",text:w.de}
+  ])),open:[],matched:0,locked:false};
+  showGame(`<div class="game">
+    <h2>🧠 Memory</h2>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <p>Paare: <b id="memoryScore">0 / 4</b></p>
+  </div>`);
+  drawMemory();
+}
+function drawMemory(){
+  $("memoryGrid").innerHTML=memoryState.cards.map((c,i)=>{
+    const open=memoryState.open.includes(i)||c.matched;
+    return `<div class="memory-card ${open?"open":""}" onclick="memoryClick(${i})">${open?esc(c.text):"?"}</div>`;
+  }).join("");
+}
+function memoryClick(i){
+  const s=memoryState;
+  if(s.locked||s.open.includes(i)||s.cards[i].matched)return;
+  s.open.push(i);drawMemory();
+  if(s.open.length===2){
+    s.locked=true;
+    const [a,b]=s.open;
+    setTimeout(()=>{
+      if(s.cards[a].id===s.cards[b].id && s.cards[a].type!==s.cards[b].type){
+        s.cards[a].matched=true;s.cards[b].matched=true;s.matched++;addXP(30);
+      }
+      s.open=[];s.locked=false;drawMemory();
+      $("memoryScore").textContent=s.matched+" / 4";
+      if(s.matched===4){
+        const reward=150000;
+        user().coins+=reward;saveUser();
+        toast(`🧠 Memory geschafft! +${money(reward)} Coins`);
+      }
+    },650);
+  }
+}
+
+/* Spelling */
+function startSpelling(){
+  if(!needWords())return;
+  blitzState={round:0,score:0,w:randomWord()};
+  showGame(`<div class="game">
+    <h2>✍️ Spell Rush</h2>
+    <p>Übersetze:</p>
+    <div class="game-target" id="spellWord">${esc(blitzState.w.en)}</div>
+    <input id="spellInput" placeholder="Deutsche Übersetzung">
+    <br><button class="btn" onclick="spellAnswer()">Prüfen</button>
+    <p><b id="spellScore">0</b> / 10 richtig</p>
+  </div>`);
+}
+function spellAnswer(){
+  const s=blitzState;
+  if(!s)return;
+  const a=$("spellInput").value.trim().toLowerCase();
+  if(a===s.w.de.toLowerCase()){s.score++;addXP(25);toast("✅ Richtig!")}
+  else toast("❌ Lösung: "+s.w.de);
+  s.round++;
+  if(s.round>=10){
+    const reward=s.score*35000;
+    user().coins+=reward;saveUser();
+    toast(`✍️ Fertig! +${money(reward)} Coins`);
+    blitzState=null;renderGames();render();return;
+  }
+  s.w=randomWord();
+  $("spellWord").textContent=s.w.en;
+  $("spellInput").value="";
+  $("spellScore").textContent=s.score;
+}
+
+/* Reaction */
+function startReaction(){
+  reactionState={time:10,score:0,target:false};
+  showGame(`<div class="game">
+    <h2>🦊 Reaction Fox</h2>
+    <p>Klicke den Fuchs so schnell du kannst!</p>
+    <div id="reactionArea" style="height:180px;width:100%;position:relative;background:#f2efff;border-radius:18px"></div>
+    <p>Treffer: <b id="reactionScore">0</b></p>
+  </div>`);
+  moveFox();
+  reactionState.interval=setInterval(()=>{
+    reactionState.time--;
+    if(reactionState.time<=0)endReaction();
+    else moveFox();
+  },1000);
+}
+function moveFox(){
+  const area=$("reactionArea");if(!area)return;
+  const x=Math.random()*80+5,y=Math.random()*65+5;
+  area.innerHTML=`<button style="position:absolute;left:${x}%;top:${y}%;font-size:35px;background:none" onclick="hitFox()">🦊</button>`;
+}
+function hitFox(){
+  if(!reactionState)return;
+  reactionState.score++;addXP(10);
+  $("reactionScore").textContent=reactionState.score;
+  moveFox();
+}
+function endReaction(){
+  if(!reactionState)return;
+  clearInterval(reactionState.interval);
+  const reward=reactionState.score*30000;
+  user().coins+=reward;saveUser();
+  toast(`🦊 Reaktion beendet! +${money(reward)} Coins`);
+  reactionState=null;renderGames();render();
+}
+
+/* Coin Catch */
+function startCatch(){
+  coinCatchState={time:20,score:0};
+  showGame(`<div class="game">
+    <h2>🪙 Coin Catch</h2>
+    <div class="timer" id="catchTimer">20</div>
+    <div id="catchArea" style="height:230px;width:100%;position:relative;background:#fff8dd;border-radius:18px"></div>
+    <p>Gefangen: <b id="catchScore">0</b></p>
+  </div>`);
+  moveCoin();
+  coinCatchState.interval=setInterval(()=>{
+    coinCatchState.time--;
+    if($("catchTimer"))$("catchTimer").textContent=coinCatchState.time;
+    if(coinCatchState.time<=0)endCatch();
+    else moveCoin();
+  },1000);
+}
+function moveCoin(){
+  const area=$("catchArea");if(!area)return;
+  const x=Math.random()*88+2,y=Math.random()*75+2;
+  area.innerHTML=`<button style="position:absolute;left:${x}%;top:${y}%;font-size:30px;background:none" onclick="catchCoin()">🪙</button>`;
+}
+function catchCoin(){
+  if(!coinCatchState)return;
+  coinCatchState.score++;addXP(5);
+  $("catchScore").textContent=coinCatchState.score;
+  moveCoin();
+}
+function endCatch(){
+  if(!coinCatchState)return;
+  clearInterval(coinCatchState.interval);
+  const reward=coinCatchState.score*20000;
+  user().coins+=reward;saveUser();
+  toast(`🪙 Gefangen: ${coinCatchState.score} → +${money(reward)} Coins`);
+  coinCatchState=null;renderGames();render();
+}
+function showGame(html){$("gameArea").innerHTML=html}
+
+/* =========================
    ADMIN
-========================================================= */
+========================= */
 
-function adminStarClick(){
+let starClicks=0,starTimer=null;
 
-  adminClicks++;
-
-  clearTimeout(
-    adminClickTimer
-  );
-
-
-  adminClickTimer =
-    setTimeout(()=>{
-      adminClicks = 0;
-    },3000);
-
-
-  if(adminClicks >= 7){
-
-    adminClicks = 0;
-
-    document.getElementById(
-      "adminPinInput"
-    ).value = "";
-
-
-    document
-      .getElementById(
-        "adminLoginModal"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
+$("adminTrigger").onclick=()=>{
+  starClicks++;
+  clearTimeout(starTimer);
+  starTimer=setTimeout(()=>starClicks=0,3000);
+  if(starClicks>=7){
+    starClicks=0;
+    openAdminLogin();
   }
+};
 
+function openAdminLogin(){
+  openModal(`
+    <h2>⚙️ Admin</h2>
+    <input id="adminPin" type="password" placeholder="Admin-PIN">
+    <br><br><button class="btn" onclick="checkAdmin()">Öffnen</button>
+  `);
 }
-
-
-function closeAdminLogin(){
-
-  document
-    .getElementById(
-      "adminLoginModal"
-    )
-    .classList.add(
-      "hidden"
-    );
-
+function checkAdmin(){
+  const pin=localStorage.getItem(PIN_KEY)||"7777";
+  if($("adminPin").value!==pin)return toast("Falsche PIN.");
+  openAdmin();
 }
+function openAdmin(){
+  const codes=JSON.parse(localStorage.getItem(CODES_KEY)||"[]");
+  openModal(`
+    <h2>⚙️ Vocaboo Admin</h2>
+    <p><small>Hinweis: Diese Demo speichert Daten nur in localStorage. Das ist keine sichere Server-Authentifizierung.</small></p>
 
+    <h3>Preise & Belohnungen</h3>
+    <label>Importkosten pro neuem Wort</label>
+    <input id="adminImportCost" type="number" value="${settings.wordImportCost}">
+    <br><br>
+    <label>Coins pro Lernrunde</label>
+    <input id="adminLearnReward" type="number" value="${settings.learnReward}">
+    <br><br>
+    <label>Preis Streak-Eis</label>
+    <input id="adminFreezeCost" type="number" value="${settings.streakFreezeCost}">
+    <br><br>
+    <button class="btn" onclick="saveAdminSettings()">Einstellungen speichern</button>
 
-function adminLogin(){
+    <hr>
 
-  const pin =
-    document.getElementById(
-      "adminPinInput"
-    ).value;
+    <h3>🎟️ Coin-Code erstellen</h3>
+    <input id="codeAmount" type="number" placeholder="Coins, z.B. 10000000">
+    <input id="codeUses" type="number" placeholder="Max. Nutzungen, z.B. 10">
+    <br><br>
+    <button class="btn" onclick="createCode()">Code erstellen</button>
+    <div id="codeList">${codes.map(c=>`
+      <div class="card" style="margin-top:10px">
+        <b>${esc(c.code)}</b><br>
+        🪙 ${money(c.coins)} · ${c.uses}/${c.maxUses} Nutzungen
+      </div>`).join("")||"<p>Noch keine Codes.</p>"}</div>
 
+    <hr>
 
-  const savedPin =
-    localStorage.getItem(
-      ADMIN_PIN_KEY
-    ) || "7777";
+    <h3>🔐 Admin-PIN ändern</h3>
+    <input id="newAdminPin" placeholder="Neue PIN">
+    <br><br><button class="btn" onclick="changeAdminPin()">PIN ändern</button>
 
-
-  if(pin !== savedPin){
-
-    toast(
-      "Falsche Admin-PIN."
-    );
-
-    return;
-
-  }
-
-
-  closeAdminLogin();
-
-  openAdminPanel();
-
+    <br><br>
+    <button class="btn secondary" onclick="closeModal()">Schließen</button>
+  `);
 }
-
-
-function openAdminPanel(){
-
-  renderAdminPanel();
-
-
-  document
-    .getElementById(
-      "adminPanel"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-}
-
-
-function closeAdminPanel(){
-
-  document
-    .getElementById(
-      "adminPanel"
-    )
-    .classList.add(
-      "hidden"
-    );
-
-}
-
-
-/* =========================================================
-   ADMIN SETTINGS
-========================================================= */
-
-function renderAdminPanel(){
-
-  const codes =
-    loadCodes();
-
-
-  document.getElementById(
-    "adminUserCount"
-  ).textContent =
-    Object.keys(users).length;
-
-
-  document.getElementById(
-    "adminCodeCount"
-  ).textContent =
-    codes.length;
-
-
-  document.getElementById(
-    "adminCurrentCoins"
-  ).textContent =
-    data
-      ? formatNumber(data.coins)
-      : "0";
-
-
-  document.getElementById(
-    "settingImportCost"
-  ).value =
-    settings.wordImportCost;
-
-
-  document.getElementById(
-    "settingFreezeCost"
-  ).value =
-    settings.freezeCost;
-
-
-  document.getElementById(
-    "settingQuizReward"
-  ).value =
-    settings.quizReward;
-
-
-  renderGeneratedCodes();
-
-}
-
-
 function saveAdminSettings(){
-
-  const importCost =
-    Number(
-      document.getElementById(
-        "settingImportCost"
-      ).value
-    );
-
-
-  const freezeCost =
-    Number(
-      document.getElementById(
-        "settingFreezeCost"
-      ).value
-    );
-
-
-  const quizReward =
-    Number(
-      document.getElementById(
-        "settingQuizReward"
-      ).value
-    );
-
-
-  if(
-    importCost < 0 ||
-    freezeCost < 0 ||
-    quizReward < 0
-  ){
-
-    toast(
-      "Preise dürfen nicht negativ sein."
-    );
-
-    return;
-
-  }
-
-
-  settings.wordImportCost =
-    importCost;
-
-
-  settings.freezeCost =
-    freezeCost;
-
-
-  settings.quizReward =
-    quizReward;
-
-
-  saveSettings();
-
-  updateUI();
-
-
-  toast(
-    "Admin-Einstellungen gespeichert."
-  );
-
+  settings.wordImportCost=Math.max(0,Number($("adminImportCost").value)||0);
+  settings.learnReward=Math.max(0,Number($("adminLearnReward").value)||0);
+  settings.streakFreezeCost=Math.max(0,Number($("adminFreezeCost").value)||0);
+  saveSettings();closeModal();render();toast("Admin-Einstellungen gespeichert.");
 }
-
-
-function generateRandomCode(){
-
-  const chars =
-    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-
-  let code = "";
-
-
-  for(
-    let i=0;
-    i<10;
-    i++
-  ){
-
-    code +=
-      chars[
-        Math.floor(
-          Math.random() *
-          chars.length
-        )
-      ];
-
-  }
-
-
-  return "VOC-" + code;
-
+function createCode(){
+  const coins=Number($("codeAmount").value);
+  const maxUses=Number($("codeUses").value);
+  if(!coins||!maxUses)return toast("Coins und Nutzungen angeben.");
+  const codes=JSON.parse(localStorage.getItem(CODES_KEY)||"[]");
+  const code="VOC-"+Math.random().toString(36).substring(2,8).toUpperCase();
+  codes.push({code,coins,maxUses,uses:0,createdAt:new Date().toISOString()});
+  localStorage.setItem(CODES_KEY,JSON.stringify(codes));
+  toast("Code erstellt: "+code);
+  openAdmin();
 }
-
-
-function generateCodes(){
-
-  const coins =
-    Number(
-      document.getElementById(
-        "codeCoins"
-      ).value
-    );
-
-
-  const maxUses =
-    Number(
-      document.getElementById(
-        "codeMaxUses"
-      ).value
-    );
-
-
-  const quantity =
-    Number(
-      document.getElementById(
-        "codeQuantity"
-      ).value
-    );
-
-
-  if(coins <= 0){
-
-    toast(
-      "Coin-Betrag muss größer als 0 sein."
-    );
-
-    return;
-
-  }
-
-
-  if(maxUses <= 0){
-
-    toast(
-      "Das Nutzungslimit muss mindestens 1 sein."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    quantity <= 0 ||
-    quantity > 100
-  ){
-
-    toast(
-      "Du kannst 1 bis 100 Codes erstellen."
-    );
-
-    return;
-
-  }
-
-
-  const codes =
-    loadCodes();
-
-
-  for(
-    let i=0;
-    i<quantity;
-    i++
-  ){
-
-    let code;
-
-
-    do{
-
-      code =
-        generateRandomCode();
-
-    }while(
-      codes.some(
-        c =>
-          c.code === code
-      )
-    );
-
-
-    codes.push({
-
-      code,
-
-      coins,
-
-      maxUses,
-
-      uses:0,
-
-      createdAt:
-        new Date().toISOString()
-
-    });
-
-  }
-
-
-  saveCodes(codes);
-
-  renderAdminPanel();
-
-
-  toast(
-    `${quantity} Code(s) erstellt.`
-  );
-
-}
-
-
-function renderGeneratedCodes(){
-
-  const container =
-    document.getElementById(
-      "generatedCodes"
-    );
-
-
-  if(!container){
-    return;
-  }
-
-
-  const codes =
-    loadCodes();
-
-
-  if(!codes.length){
-
-    container.innerHTML = `
-
-      <div style="color:var(--muted)">
-        Noch keine Codes erstellt.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    codes
-      .map(
-        c=>`
-
-          <div class="code-row">
-
-            <div>
-
-              <strong>
-                ${escapeHTML(c.code)}
-              </strong>
-
-              <br>
-
-              <span
-                style="color:var(--muted)"
-              >
-                ${formatNumber(c.coins)}
-                Coins
-              </span>
-
-            </div>
-
-
-            <div>
-
-              <strong>
-                ${c.uses}
-                /
-                ${c.maxUses}
-              </strong>
-
-              <br>
-
-              <span
-                style="color:var(--muted)"
-              >
-                Einlösungen
-              </span>
-
-            </div>
-
-          </div>
-
-        `
-      )
-      .join("");
-
-}
-
-
 function changeAdminPin(){
-
-  const newPin =
-    document
-      .getElementById(
-        "newAdminPin"
-      )
-      .value
-      .trim();
-
-
-  if(newPin.length < 4){
-
-    toast(
-      "Die PIN muss mindestens 4 Zeichen haben."
-    );
-
-    return;
-
-  }
-
-
-  localStorage.setItem(
-    ADMIN_PIN_KEY,
-    newPin
-  );
-
-
-  document.getElementById(
-    "newAdminPin"
-  ).value = "";
-
-
-  toast(
-    "Admin-PIN geändert."
-  );
-
+  const pin=$("newAdminPin").value.trim();
+  if(pin.length<4)return toast("PIN muss mindestens 4 Zeichen haben.");
+  localStorage.setItem(PIN_KEY,pin);toast("PIN geändert.");
 }
 
+/* =========================
+   AUTH
+========================= */
 
-function deleteAllCodes(){
+$("switchAuth").onclick=()=>{
+  authMode=authMode==="register"?"login":"register";
+  $("authTitle").textContent=authMode==="register"?"Willkommen!":"Willkommen zurück!";
+  $("authText").textContent=authMode==="register"?"Erstelle deinen kostenlosen Account.":"Melde dich mit deinem Account an.";
+  $("authBtn").textContent=authMode==="register"?"Registrieren":"Anmelden";
+  $("playerName").classList.toggle("hidden",authMode==="login");
+  $("switchAuth").textContent=authMode==="register"?"Ich habe schon einen Account":"Ich möchte einen neuen Account";
+};
 
-  if(
-    !confirm(
-      "Wirklich alle generierten Codes löschen?"
-    )
-  ){
+$("authBtn").onclick=()=>{
+  const name=$("username").value.trim().toLowerCase();
+  const pass=$("password").value;
+  const display=$("playerName").value.trim();
 
-    return;
+  if(name.length<3)return toast("Benutzername muss mindestens 3 Zeichen haben.");
+  if(pass.length<4)return toast("Passwort muss mindestens 4 Zeichen haben.");
 
-  }
-
-
-  saveCodes([]);
-
-  renderAdminPanel();
-
-
-  toast(
-    "Alle Codes gelöscht."
-  );
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function toast(message){
-
-  const element =
-    document.getElementById(
-      "toast"
-    );
-
-
-  element.textContent =
-    message;
-
-
-  element.classList.add(
-    "show"
-  );
-
-
-  clearTimeout(
-    toastTimer
-  );
-
-
-  toastTimer =
-    setTimeout(()=>{
-      element.classList.remove(
-        "show"
-      );
-    },2800);
-
-}
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-function escapeHTML(value){
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-function escapeAttribute(value){
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    );
-
-}
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-function init(){
-
-  settings =
-    loadSettings();
-
-  users =
-    loadUsers();
-
-
-  if(
-    currentUsername &&
-    users[currentUsername]
-  ){
-
-    data =
-      users[currentUsername];
-
-    normalizeUserData();
-
-    openApp();
-
+  if(authMode==="register"){
+    if(users[name])return toast("Dieser Benutzername existiert bereits.");
+    users[name]=ensureUserShape({
+      password:pass,
+      playerName:display||name,
+      coins:10000000,
+      xp:0,words:[],streak:0,bestStreak:0,lastStudyDate:"",
+      streakFreezes:0,claimedOffers:[],usedCodes:[],
+      stats:{sessions:0,correct:0,answers:0}
+    });
   }else{
-
-    document
-      .getElementById(
-        "authScreen"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
-    document
-      .getElementById(
-        "app"
-      )
-      .classList.add(
-        "hidden"
-      );
-
+    if(!users[name]||users[name].password!==pass)return toast("Benutzername oder Passwort falsch.");
   }
 
+  currentUser=name;
+  localStorage.setItem(CURRENT_KEY,name);
+  saveUsers();
+  $("auth").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  showScreen("home");
+};
+
+$("nameInput").onchange=()=>{
+  if(!currentUser)return;
+  user().playerName=$("nameInput").value.trim()||currentUser;
+  saveUser();renderHome();
+};
+
+/* Modal */
+function openModal(html){
+  $("modalBox").innerHTML=html;
+  $("modal").style.display="flex";
 }
+function closeModal(){$("modal").style.display="none"}
+$("modal").onclick=e=>{if(e.target.id==="modal")closeModal()};
 
+/* Navigation */
+document.querySelectorAll(".nav button").forEach(b=>{
+  b.onclick=()=>showScreen(b.dataset.screen);
+});
 
-init();
+/* Start */
+if(currentUser && users[currentUser]){
+  ensureUserShape(users[currentUser]);
+  saveUsers();
+  $("auth").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  showScreen("home");
+}else{
+  $("auth").classList.remove("hidden");
+  $("app").classList.add("hidden");
+}
 
 </script>
-
 </body>
 </html>
